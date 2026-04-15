@@ -1,0 +1,7 @@
+aws_region             = "us-east-2"
+project_name           = "ross-ryan-group"
+environment            = "production"
+domain_name            = "rossandryangroup.com"
+s3_bucket_name         = "www.rossandryangroup.com"
+cloudfront_price_class = "PriceClass_All"
+github_repository      = "dfp-side-hustle/cowork-ross"
