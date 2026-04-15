@@ -56,5 +56,5 @@ variable "cloudfront_price_class" {
 variable "github_repository" {
   description = "GitHub repository in owner/repo format for OIDC trust policy"
   type        = string
-  default     = "dfp-side-hustle/cowork-ross"
+  default     = "dfp-side-hustle/cowork-ross-app"
 }
