@@ -19,10 +19,6 @@ export const metadata: Metadata = {
   title: 'Ross & Ryan Group | Beverly Hills Luxury Real Estate',
   description:
     'Top-producing agents at Douglas Elliman, specializing in luxury residential and commercial properties across Los Angeles.',
-  icons: {
-    icon: '/rrg-logo-white-black.png',
-    apple: '/rrg-logo-white-black.png',
-  },
   openGraph: {
     title: 'Ross & Ryan Group | Beverly Hills Luxury Real Estate',
     description:
