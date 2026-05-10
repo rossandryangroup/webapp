@@ -1,0 +1,17 @@
+{
+  "deploy_target": "vercel",
+  "git_remote": "git@github.com:rossandryangroup/webapp.git",
+  "domain": "rossandryangroup.com",
+  "vercel": {
+    "team_id": "team_26yB85UqDfZk60QVxoU8AbXr",
+    "team_slug": "david-foxpowells-projects",
+    "project_id": "prj_na9kCWQ0wAkOJVAfu7lGQoAecdQI",
+    "project_name": "rossandryangroup"
+  },
+  "milestones": {
+    "M01": { "status": "in_progress" },
+    "M02": { "status": "in_progress" },
+    "M03": { "status": "in_progress" },
+    "M04a": { "status": "in_progress" }
+  }
+}

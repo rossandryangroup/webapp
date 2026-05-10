@@ -1,0 +1,4 @@
+{
+  "ignorePatterns": [".next", "node_modules"],
+  "singleQuote": true
+}

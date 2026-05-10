@@ -10,13 +10,35 @@ Part of the three-tier cowork monorepo (parent → `cowork-ross` → this app). 
 
 ## Stack
 
-- Terraform
+- Next.js 16 (App Router, Turbopack) at `frontend/`
+- Bun (package manager + runtime, no npm/pnpm/yarn)
+- Tailwind CSS 4
+- React 19
+- Vercel (hosting, auto-deploy from `main` via GitHub integration)
+- Terraform (legacy AWS stack; DNS module being repurposed for Vercel)
 
 ## Build / Dev / Test
 
+```bash
+cd frontend
+bun install
+bun run dev          # next dev (port 3000)
+bun run build        # next build
+bun run format:fix   # oxfmt
+bun run lint:fix     # oxlint
+bun run typecheck    # tsgo
+bun run knip         # knip-bun (unused deps)
+```
+
+Pre-push: `format:fix && lint:fix && typecheck && knip` all must exit 0.
+
 ## Directory Conventions
 
+- `frontend/` (Next.js app, Vercel root directory)
 - `terraform/` (infra as code; deployed via GitHub Actions, never `apply` locally)
+- `.devcontainer/` (Dockerized dev env with Postgres)
+- `.github/workflows/` (CI, deploy, terraform-plan, terraform-apply)
+- `.husky/pre-push` (local pre-push gate)
 
 ## Style Rules (universal)
 
