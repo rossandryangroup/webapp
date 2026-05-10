@@ -6,12 +6,19 @@
     "team_id": "team_26yB85UqDfZk60QVxoU8AbXr",
     "team_slug": "david-foxpowells-projects",
     "project_id": "prj_na9kCWQ0wAkOJVAfu7lGQoAecdQI",
-    "project_name": "rossandryangroup"
+    "project_name": "rossandryangroup",
+    "production_url": "https://rossandryangroup-87xqzeg2d-david-foxpowells-projects.vercel.app",
+    "domains_attached": ["rossandryangroup.com", "www.rossandryangroup.com"]
+  },
+  "dns_targets": {
+    "apex_A": "216.150.1.1, 216.150.16.1",
+    "www_CNAME": "cname.vercel-dns.com."
   },
   "milestones": {
-    "M01": { "status": "in_progress" },
-    "M02": { "status": "in_progress" },
-    "M03": { "status": "in_progress" },
-    "M04a": { "status": "in_progress" }
+    "M01": { "status": "complete", "pr": "https://github.com/rossandryangroup/webapp/pull/1", "merged_sha": "c8aba8d" },
+    "M02": { "status": "complete", "pr": "https://github.com/rossandryangroup/webapp/pull/1", "merged_sha": "c8aba8d" },
+    "M03": { "status": "complete", "pr": "https://github.com/rossandryangroup/webapp/pull/1", "merged_sha": "c8aba8d" },
+    "M04a": { "status": "complete", "pr": "https://github.com/rossandryangroup/webapp/pull/1", "merged_sha": "c8aba8d" },
+    "M05": { "status": "deferred", "note": "DNS cutover handed back to user for terraform DNS module patch + nameserver flip" }
   }
 }
