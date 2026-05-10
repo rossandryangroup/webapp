@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(git rev-parse --show-toplevel)/frontend"
+bun run format:fix
+bun run lint:fix
+bun run typecheck
+bun run knip

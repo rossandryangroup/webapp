@@ -1,0 +1,48 @@
+{
+  "name": "rossandryan-${localWorkspaceFolderBasename}",
+  "service": "devcontainer",
+  "dockerComposeFile": "compose.yml",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "updateContentCommand": {
+    "install dependencies": [
+      "/bin/bash",
+      "-c",
+      "cd /workspace/frontend && /root/.bun/bin/bun install"
+    ]
+  },
+  "postCreateCommand": "/root/.bun/bin/bun --version",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "webpro.knip",
+        "oxc.oxc-vscode",
+        "bradlc.vscode-tailwindcss"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "editor.defaultFormatter": "oxc.oxc-vscode",
+        "editor.formatOnSave": true,
+        "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+        "[typescriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+        "[javascript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+        "[javascriptreact]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+        "eslint.enable": false,
+        "knip.configFilePath": "frontend/knip.json",
+        "knip.enabled": true,
+        "oxc.enable": true,
+        "oxc.configPath": "frontend/oxlint.json",
+        "oxc.tsConfigPath": "frontend/tsconfig.json",
+        "oxc.path.oxlint": "frontend/node_modules/oxlint/bin/oxlint",
+        "oxc.path.oxfmt": "frontend/node_modules/oxfmt/bin/oxfmt",
+        "oxc.fmt.configPath": "frontend/.oxfmtrc.json"
+      }
+    }
+  }
+}
