@@ -97,17 +97,34 @@ export default function AboutPage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(440px, 64vh, 660px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), image-set(url(/hutton-garage.webp) type("image/webp"), url(/hutton-garage.jpg) type("image/jpeg"))`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
           display: 'flex',
           alignItems: 'flex-end',
+          overflow: 'hidden',
         }}
       >
+        <Image
+          src="/hutton-garage.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%)',
+            zIndex: 1,
+          }}
+        />
         <div
           className="section-pad"
           style={{
+            position: 'relative',
+            zIndex: 2,
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',

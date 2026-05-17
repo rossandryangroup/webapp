@@ -186,11 +186,13 @@ export function ArticleBody({ markdown }: { markdown: string }) {
                 background: 'var(--bg-alt)',
               }}
             >
-              {/* biome-ignore lint/performance/noImgElement: editorial inline images */}
+              {/* biome-ignore lint/performance/noImgElement: editorial markdown image with unknown dimensions */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={typeof src === 'string' ? src : ''}
                 alt={alt ?? ''}
+                loading="lazy"
+                decoding="async"
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
               {alt && (
