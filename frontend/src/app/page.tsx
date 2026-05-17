@@ -56,24 +56,6 @@ export default function HomePage() {
           }}
         >
           <div style={{ maxWidth: 820 }}>
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: 14,
-                marginBottom: 22,
-              }}
-            >
-              <Ey style={{ color: 'var(--accent)' }}>Cover Feature</Ey>
-              <div
-                style={{
-                  height: 1,
-                  width: 80,
-                  background: 'rgba(255,255,255,0.4)',
-                }}
-              />
-              <Ov style={{ color: 'rgba(255,255,255,0.72)' }}>Beverly Hills · Evening light</Ov>
-            </div>
             <h1
               style={{
                 fontFamily: 'var(--font-serif), serif',
@@ -104,6 +86,18 @@ export default function HomePage() {
           style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 48, alignItems: 'start' }}
         >
           <div>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 14,
+                marginBottom: 22,
+              }}
+            >
+              <Ey>Cover Feature</Ey>
+              <div style={{ height: 1, width: 80, background: 'var(--border)' }} />
+              <Ov>Beverly Hills · Evening light</Ov>
+            </div>
             <p
               style={{
                 fontFamily: 'var(--font-serif), serif',
