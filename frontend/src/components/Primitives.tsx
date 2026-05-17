@@ -1,4 +1,5 @@
 import type { CSSProperties, ReactNode } from 'react';
+import { LAIcon, type LAIconName } from './LAIcons';
 
 export const Hillside = ({
   size = 44,
@@ -31,6 +32,7 @@ export const Photo = ({
   alt = '',
   objectPosition = 'center',
   label,
+  icon,
   children,
   style: sx = {},
 }: {
@@ -40,6 +42,7 @@ export const Photo = ({
   alt?: string;
   objectPosition?: string;
   label?: string;
+  icon?: LAIconName;
   children?: ReactNode;
   style?: CSSProperties;
 }) => (
@@ -68,6 +71,21 @@ export const Photo = ({
           display: 'block',
         }}
       />
+    )}
+    {!src && icon && (
+      <div
+        style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: 'var(--ink)',
+          opacity: 0.55,
+        }}
+      >
+        <LAIcon name={icon} size={Math.min(h * 1.1, 280)} />
+      </div>
     )}
     {children}
     {label && (

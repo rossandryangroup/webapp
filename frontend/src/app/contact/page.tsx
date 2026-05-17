@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { Footer } from '../../components/Footer';
 import { InquireForm } from '../../components/InquireForm';
 import { Nav } from '../../components/Nav';
-import { Ey, Hillside, SectionHead } from '../../components/Primitives';
+import { Ey, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
@@ -235,7 +235,6 @@ export default function ContactPage() {
             >
               (310) 595-3888 main
             </div>
-            <Hillside size={44} color="var(--ink-mute)" />
           </div>
           <div>
             <SectionHead label="Start a conversation" note="We respond same day" />

@@ -21,88 +21,100 @@ export default function PropertiesClient() {
 
       <section
         className="section-pad"
-        style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 72px' }}
+        style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 24px' }}
       >
         <SectionHead label="This month's featured listings" />
+      </section>
+
+      <Link
+        href={`/properties/${cover.slug}`}
+        aria-label={`View ${cover.addr}`}
+        style={{
+          display: 'block',
+          position: 'relative',
+          width: '100%',
+          minHeight: 'clamp(440px, 64vh, 640px)',
+          backgroundImage: cover.image
+            ? `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.65) 100%), url(${cover.image})`
+            : `var(--${cover.ph})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          color: '#fff',
+          overflow: 'hidden',
+        }}
+      >
         <div
-          className="grid-collapse"
+          className="section-pad"
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1.2fr 1fr',
-            gap: 56,
-            alignItems: 'start',
+            position: 'relative',
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '64px 40px 56px',
+            width: '100%',
+            minHeight: 'inherit',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            gap: 18,
           }}
         >
-          <div>
-            <h1
-              style={{
-                fontFamily: 'var(--font-serif), serif',
-                fontSize: 'clamp(2.5rem,6vw,5rem)',
-                fontWeight: 500,
-                lineHeight: 1.05,
-                letterSpacing: '-.025em',
-                color: 'var(--ink)',
-                textWrap: 'pretty',
-                marginBottom: 22,
-              }}
-            >
-              {cover.addr}
-            </h1>
-            <div
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 10,
-                fontWeight: 500,
-                letterSpacing: '.08em',
-                color: 'var(--ink-mute)',
-                marginBottom: 5,
-              }}
-            >
-              {cover.hood}
-            </div>
-            <div
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 10,
-                letterSpacing: '.06em',
-                color: 'var(--ink-mute)',
-                marginBottom: 18,
-              }}
-            >
-              {cover.spec}
-            </div>
+          <div
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 10,
+              fontWeight: 500,
+              letterSpacing: '.14em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.85)',
+            }}
+          >
+            {cover.hood} · {cover.spec}
+          </div>
+          <h1
+            style={{
+              fontFamily: 'var(--font-serif), serif',
+              fontSize: 'clamp(2.5rem, 5.8vw, 4.75rem)',
+              fontWeight: 500,
+              lineHeight: 1.05,
+              letterSpacing: '-.025em',
+              color: '#fff',
+              textWrap: 'pretty',
+              textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+              margin: 0,
+              maxWidth: 820,
+            }}
+          >
+            {cover.addr}
+          </h1>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 24, flexWrap: 'wrap' }}>
             <div
               style={{
                 fontFamily: 'var(--font-serif), serif',
                 fontSize: 28,
                 fontWeight: 400,
-                color: 'var(--ink)',
-                marginBottom: 26,
+                color: '#fff',
               }}
             >
               {cover.price}
             </div>
-            <Link
-              href={`/properties/${cover.slug}`}
+            <span
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: 9,
                 fontWeight: 700,
                 letterSpacing: '.16em',
                 textTransform: 'uppercase',
-                color: 'var(--accent)',
-                borderBottom: '1px solid var(--accent)',
+                color: '#fff',
+                borderBottom: '1px solid rgba(255,255,255,0.8)',
                 paddingBottom: 2,
               }}
             >
               View the listing →
-            </Link>
-          </div>
-          <div>
-            <Photo h={480} ph={cover.ph} src={cover.image} alt={cover.addr} />
+            </span>
           </div>
         </div>
-      </section>
+      </Link>
 
       <section style={{ borderTop: '1px solid var(--border)', padding: '56px 0' }}>
         <div
@@ -157,7 +169,7 @@ export default function PropertiesClient() {
                   href={`/properties/${l.slug}`}
                   style={{ background: 'var(--bg-alt)', overflow: 'hidden', display: 'block' }}
                 >
-                  <Photo h={i === 0 ? 260 : 190} ph={l.ph} src={l.image} alt={l.addr}>
+                  <Photo h={i === 0 ? 260 : 190} ph={l.ph} src={l.image} icon={l.icon} alt={l.addr}>
                     <div style={{ position: 'absolute', top: 12, left: 12 }}>
                       <span
                         style={{

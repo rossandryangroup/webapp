@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { NavMobileMenu } from './NavMobileMenu';
 import { useTheme } from './ThemeProvider';
 
 const Sun = () => (
@@ -170,6 +171,34 @@ export function Nav({ current = '' }: { current?: string }) {
           >
             {theme === 'light' ? <Moon /> : <Sun />}
           </button>
+        </div>
+
+        <div
+          className="nav-mobile-only"
+          style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 10 }}
+        >
+          <button
+            type="button"
+            onClick={toggle}
+            title={theme === 'light' ? 'Switch to dark' : 'Switch to light'}
+            aria-label="Toggle theme"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: 30,
+              height: 30,
+              background: 'transparent',
+              border: '1px solid var(--border-md)',
+              borderRadius: 1,
+              color: 'var(--ink-mute)',
+              flexShrink: 0,
+              cursor: 'pointer',
+            }}
+          >
+            {theme === 'light' ? <Moon /> : <Sun />}
+          </button>
+          <NavMobileMenu links={LINKS} current={current} />
         </div>
       </div>
     </header>
