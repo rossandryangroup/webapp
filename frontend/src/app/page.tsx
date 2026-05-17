@@ -31,10 +31,72 @@ export default function HomePage() {
     <>
       <Nav />
 
-      {/* Hero */}
+      {/* Cover hero: full-bleed background image with overlaid title */}
+      <section
+        aria-label="Cover feature"
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: 'clamp(480px, 72vh, 720px)',
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.bhNight})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          alignItems: 'flex-end',
+        }}
+      >
+        <div
+          className="section-pad"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '64px 40px 56px',
+            width: '100%',
+          }}
+        >
+          <div style={{ maxWidth: 820 }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 14,
+                marginBottom: 22,
+              }}
+            >
+              <Ey style={{ color: 'var(--accent)' }}>Cover Feature</Ey>
+              <div
+                style={{
+                  height: 1,
+                  width: 80,
+                  background: 'rgba(255,255,255,0.4)',
+                }}
+              />
+              <Ov style={{ color: 'rgba(255,255,255,0.72)' }}>Beverly Hills · Evening light</Ov>
+            </div>
+            <h1
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
+                fontWeight: 500,
+                lineHeight: 1.05,
+                letterSpacing: '-.025em',
+                color: '#fff',
+                textWrap: 'pretty',
+                textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+                margin: 0,
+              }}
+            >
+              A house on a quiet street is still the best investment in Los Angeles.
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      {/* Cover lede + walkthrough sidebar */}
       <section
         className="section-pad"
-        style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 0' }}
+        style={{ maxWidth: 1320, margin: '0 auto', padding: '56px 40px 0' }}
       >
         <Rule accent style={{ marginBottom: 28 }} />
         <div
@@ -42,64 +104,36 @@ export default function HomePage() {
           style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 48, alignItems: 'start' }}
         >
           <div>
-            <Photo
-              h={460}
-              ph="ph-1"
-              src={EDITORIAL_IMAGES.bhNight}
-              alt="Beverly Hills at night"
-              label="Cover photography · Beverly Hills · Evening light"
-            />
-            <div style={{ paddingTop: 28 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
-                <Ey>Cover Feature</Ey>
-                <div style={{ height: 1, flex: 1, background: 'var(--border)' }} />
-              </div>
-              <h1
-                style={{
-                  fontFamily: 'var(--font-serif), serif',
-                  fontSize: 40,
-                  fontWeight: 500,
-                  lineHeight: 1.12,
-                  letterSpacing: '-.025em',
-                  color: 'var(--ink)',
-                  textWrap: 'pretty',
-                  marginBottom: 18,
-                  maxWidth: 620,
-                }}
-              >
-                A house on a quiet street is still the best investment in Los Angeles.
-              </h1>
-              <p
-                style={{
-                  fontFamily: 'var(--font-serif), serif',
-                  fontSize: 16,
-                  lineHeight: 1.82,
-                  color: 'var(--ink-soft)',
-                  marginBottom: 22,
-                  maxWidth: 540,
-                  textWrap: 'pretty',
-                }}
-              >
-                Placeholder copy. The visual design is what we're evaluating this round. This
-                paragraph sets the editorial register for the lead story. It reads like journalism,
-                not marketing, and never reaches for scarcity language.
-              </p>
-              <Link
-                href="/walkthrough/spring-2026-rate-environment"
-                style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 9,
-                  fontWeight: 700,
-                  letterSpacing: '.16em',
-                  textTransform: 'uppercase',
-                  color: 'var(--accent)',
-                  borderBottom: '1px solid var(--accent)',
-                  paddingBottom: 2,
-                }}
-              >
-                Read the piece →
-              </Link>
-            </div>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 16,
+                lineHeight: 1.82,
+                color: 'var(--ink-soft)',
+                marginBottom: 22,
+                maxWidth: 540,
+                textWrap: 'pretty',
+              }}
+            >
+              Placeholder copy. The visual design is what we're evaluating this round. This
+              paragraph sets the editorial register for the lead story. It reads like journalism,
+              not marketing, and never reaches for scarcity language.
+            </p>
+            <Link
+              href="/walkthrough/spring-2026-rate-environment"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.16em',
+                textTransform: 'uppercase',
+                color: 'var(--accent)',
+                borderBottom: '1px solid var(--accent)',
+                paddingBottom: 2,
+              }}
+            >
+              Read the piece →
+            </Link>
           </div>
 
           <div style={{ paddingTop: 4 }}>
