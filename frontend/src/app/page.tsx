@@ -1,4 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import Link from 'next/link';
 import { Footer } from '../components/Footer';
 import { Nav } from '../components/Nav';
@@ -38,7 +38,7 @@ export default function HomePage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(480px, 72vh, 720px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), url(/beverly-hills-palms.jpg)`,
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), image-set(url(/beverly-hills-palms.webp) type("image/webp"), url(/beverly-hills-palms.jpg) type("image/jpeg"))`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -508,11 +508,15 @@ export default function HomePage() {
             style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'end' }}
           >
             <div>
-              <img
+              <Image
                 src="/ross-headshot.jpg"
                 alt="Ross Groefsema"
+                width={600}
+                height={800}
+                sizes="(max-width: 768px) 50vw, 400px"
                 style={{
                   width: '100%',
+                  height: 'auto',
                   aspectRatio: '3/4',
                   objectFit: 'cover',
                   objectPosition: 'top',
@@ -535,11 +539,15 @@ export default function HomePage() {
               </div>
             </div>
             <div style={{ paddingTop: 40 }}>
-              <img
+              <Image
                 src="/ryan-headshot.jpg"
                 alt="Ryan Hirsh"
+                width={600}
+                height={800}
+                sizes="(max-width: 768px) 50vw, 400px"
                 style={{
                   width: '100%',
+                  height: 'auto',
                   aspectRatio: '3/4',
                   objectFit: 'cover',
                   objectPosition: 'top',

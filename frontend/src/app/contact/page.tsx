@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Footer } from '../../components/Footer';
 import { InquireForm } from '../../components/InquireForm';
 import { Nav } from '../../components/Nav';
@@ -104,9 +104,12 @@ export default function ContactPage() {
                   overflow: 'hidden',
                 }}
               >
-                <img
+                <Image
                   src={`/${p.img}-headshot.jpg`}
                   alt={p.name}
+                  width={360}
+                  height={480}
+                  sizes="180px"
                   style={{
                     width: '100%',
                     height: '100%',
