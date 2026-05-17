@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   };
 }
 
-const COL = 720;
+const PROSE = 680;
 
 export default async function WalkthroughEntryPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
@@ -96,72 +96,70 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
       </section>
 
       <article style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px 80px' }}>
-        <div style={{ maxWidth: COL }}>
-          {article ? (
-            <ArticleBody markdown={article.content} />
-          ) : (
-            <>
-              <p
+        {article ? (
+          <ArticleBody markdown={article.content} />
+        ) : (
+          <div style={{ maxWidth: PROSE }}>
+            <p
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: 'var(--ink-soft)',
+                marginBottom: 22,
+                textWrap: 'pretty',
+              }}
+            >
+              This piece is being written. In the meantime, here is what the author had to say about
+              it.
+            </p>
+            <div
+              style={{
+                margin: '36px 0',
+                paddingLeft: 24,
+                borderLeft: '2px solid var(--accent)',
+              }}
+            >
+              <div
                 style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 16,
-                  lineHeight: 1.85,
-                  color: 'var(--ink-soft)',
-                  marginBottom: 22,
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 22,
+                  fontStyle: 'italic',
+                  fontWeight: 400,
+                  lineHeight: 1.4,
+                  color: 'var(--ink)',
                   textWrap: 'pretty',
                 }}
               >
-                This piece is being written. In the meantime, here is what the author had to say
-                about it.
-              </p>
-              <div
-                style={{
-                  margin: '36px 0',
-                  paddingLeft: 24,
-                  borderLeft: '2px solid var(--accent)',
-                }}
-              >
-                <div
-                  style={{
-                    fontFamily: 'var(--font-serif), serif',
-                    fontSize: 22,
-                    fontStyle: 'italic',
-                    fontWeight: 400,
-                    lineHeight: 1.4,
-                    color: 'var(--ink)',
-                    textWrap: 'pretty',
-                  }}
-                >
-                  &ldquo;{w.pullquote}&rdquo;
-                </div>
-                <Ov style={{ marginTop: 10 }}>
-                  {w.by} · {w.date.split(',')[0]}
-                </Ov>
+                &ldquo;{w.pullquote}&rdquo;
               </div>
-            </>
-          )}
-
-          <Rule style={{ marginBottom: 18, marginTop: 40 }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-            <Hillside size={36} color="var(--ink-mute)" />
-            <Ov>Published {w.date} · Beverly Hills</Ov>
-            <div style={{ flex: 1 }} />
-            <Link
-              href="/walkthrough"
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 9,
-                fontWeight: 700,
-                letterSpacing: '.14em',
-                textTransform: 'uppercase',
-                color: 'var(--ink-mute)',
-                borderBottom: '1px solid var(--border-md)',
-                paddingBottom: 1,
-              }}
-            >
-              ← The Walkthrough
-            </Link>
+              <Ov style={{ marginTop: 10 }}>
+                {w.by} · {w.date.split(',')[0]}
+              </Ov>
+            </div>
           </div>
+        )}
+
+        <Rule style={{ marginBottom: 18, marginTop: 40 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+          <Hillside size={36} color="var(--ink-mute)" />
+          <Ov>Published {w.date} · Beverly Hills</Ov>
+          <div style={{ flex: 1 }} />
+          <Link
+            href="/walkthrough"
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: '.14em',
+              textTransform: 'uppercase',
+              color: 'var(--ink-mute)',
+              borderBottom: '1px solid var(--border-md)',
+              paddingBottom: 1,
+            }}
+          >
+            ← The Walkthrough
+          </Link>
         </div>
       </article>
 

@@ -11,6 +11,7 @@ const paragraph: CSSProperties = {
   color: 'var(--ink-soft)',
   marginBottom: 22,
   textWrap: 'pretty',
+  maxWidth: 680,
 };
 
 const h2: CSSProperties = {
@@ -22,6 +23,7 @@ const h2: CSSProperties = {
   marginTop: 44,
   marginBottom: 16,
   textWrap: 'pretty',
+  maxWidth: 680,
 };
 
 const h3: CSSProperties = {
@@ -34,6 +36,7 @@ const h3: CSSProperties = {
   marginTop: 32,
   marginBottom: 12,
   textWrap: 'pretty',
+  maxWidth: 680,
 };
 
 const blockquote: CSSProperties = {
@@ -47,6 +50,7 @@ const blockquote: CSSProperties = {
   lineHeight: 1.4,
   color: 'var(--ink)',
   textWrap: 'pretty',
+  maxWidth: 680,
 };
 
 const ul: CSSProperties = {
@@ -56,6 +60,7 @@ const ul: CSSProperties = {
   fontSize: 16,
   lineHeight: 1.85,
   color: 'var(--ink-soft)',
+  maxWidth: 680,
 };
 
 const li: CSSProperties = { marginBottom: 8 };
@@ -96,7 +101,7 @@ export function ArticleBody({ markdown }: { markdown: string }) {
               style={{
                 float: 'right',
                 clear: 'right',
-                width: 'clamp(280px, 42%, 380px)',
+                width: 'clamp(300px, 38%, 460px)',
                 marginLeft: 28,
                 marginRight: 0,
                 marginTop: 8,
