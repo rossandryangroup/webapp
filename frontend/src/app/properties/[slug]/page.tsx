@@ -17,10 +17,22 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const l = getListing(slug);
-  if (!l) return { title: 'Property | Ross & Ryan Group' };
+  if (!l) return { title: 'Property' };
+  const url = `https://rossandryangroup.com/properties/${slug}`;
+  const description = `${l.addr}, ${l.hood}. ${l.spec}. Offered at ${l.price}. Represented by Ross & Ryan Group, Douglas Elliman Beverly Hills.`;
+  const ogImage = l.images?.[0] ?? l.image ?? '/og-home.jpg';
   return {
-    title: `${l.addr} | Ross & Ryan Group`,
-    description: `${l.hood}. ${l.spec}. ${l.price}.`,
+    title: l.addr,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      title: `${l.addr} | Ross & Ryan Group`,
+      description,
+      url,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: `${l.addr}, ${l.hood}` }],
+      type: 'article',
+    },
+    twitter: { card: 'summary_large_image', images: [ogImage] },
   };
 }
 

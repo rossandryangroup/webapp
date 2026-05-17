@@ -7,9 +7,16 @@ import { Ey, Hillside, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
-  title: 'Contact | Ross & Ryan Group',
+  title: 'Contact',
   description:
-    "Considering a move? Let's have a real conversation first. Beverly Hills, California.",
+    'Considering a move? Start with a conversation. Beverly Hills, California. Same-day response during business hours.',
+  alternates: { canonical: 'https://rossandryangroup.com/contact' },
+  openGraph: {
+    title: 'Contact | Ross & Ryan Group',
+    description: 'Considering a move? Start with a conversation. Beverly Hills, California.',
+    url: 'https://rossandryangroup.com/contact',
+    images: [{ url: '/og-home.jpg', width: 1200, height: 630, alt: 'Ross & Ryan Group · Contact' }],
+  },
 };
 
 const PARTNERS = [

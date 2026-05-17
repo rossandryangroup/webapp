@@ -20,10 +20,24 @@ export function generateStaticParams(): Params[] {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const w = getWalkthrough(slug);
-  if (!w) return { title: 'The Walkthrough | Ross & Ryan Group' };
+  if (!w) return { title: 'The Walkthrough' };
+  const url = `https://rossandryangroup.com/walkthrough/${slug}`;
+  const description = `${w.title}. ${w.cat} from Ross & Ryan Group. ${w.read} read.`;
+  const ogImage = w.image ?? '/og-home.jpg';
   return {
-    title: `${w.title} | The Walkthrough`,
-    description: `${w.cat}. ${w.read} read. By ${w.by}.`,
+    title: w.title,
+    description,
+    authors: [{ name: w.by }],
+    alternates: { canonical: url },
+    openGraph: {
+      title: w.title,
+      description,
+      url,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: w.title }],
+      type: 'article',
+      authors: [w.by],
+    },
+    twitter: { card: 'summary_large_image', images: [ogImage] },
   };
 }
 
