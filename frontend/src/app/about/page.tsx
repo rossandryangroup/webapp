@@ -4,7 +4,6 @@ import { ContraryBand, InquireBand } from '../../components/Bands';
 import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
 import { Ey, Ov, Rule, SectionHead } from '../../components/Primitives';
-import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
   title: 'About | Ross & Ryan Group',
@@ -85,7 +84,7 @@ export default function AboutPage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(440px, 64vh, 660px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.santaMonicaArtDeco})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), url(/hutton-garage.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
