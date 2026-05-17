@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { Hillside } from './Primitives';
 import { useTheme } from './ThemeProvider';
 
 type Item = { label: string; href: string };
@@ -10,12 +9,7 @@ type Item = { label: string; href: string };
 const COLUMNS: Array<{ label: string; items: Item[] }> = [
   {
     label: 'Properties',
-    items: [
-      { label: 'Active Listings', href: '/properties' },
-      { label: 'Santa Monica', href: '/properties' },
-      { label: 'Lake Arrowhead', href: '/properties' },
-      { label: 'Echo Park', href: '/properties' },
-    ],
+    items: [{ label: 'Active Listings', href: '/properties' }],
   },
   {
     label: 'The Walkthrough',
@@ -23,10 +17,7 @@ const COLUMNS: Array<{ label: string; items: Item[] }> = [
   },
   {
     label: 'Contact',
-    items: [
-      { label: 'Schedule a conversation', href: '/contact#contact-form' },
-      { label: 'Inquire', href: '/contact#contact-form' },
-    ],
+    items: [{ label: 'Schedule a conversation', href: '/contact#contact-form' }],
   },
 ];
 
@@ -93,9 +84,6 @@ export function Footer() {
             A residential real estate group based in Beverly Hills. Two partners, fifteen years,
             real reach across greater LA.
           </p>
-          <div style={{ marginTop: 20 }}>
-            <Hillside size={40} color="var(--footer-tag)" />
-          </div>
         </div>
         {COLUMNS.map(({ label, items }) => (
           <div key={label}>
