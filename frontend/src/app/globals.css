@@ -188,4 +188,21 @@ body {
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .footer-meta {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+  .footer-blurb {
+    display: none !important;
+  }
+}
+
+@media (min-width: 901px) {
+  .nav-mobile-only {
+    display: none !important;
+  }
 }

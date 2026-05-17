@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ContraryBand } from '../../../components/Bands';
 import { Footer } from '../../../components/Footer';
+import { LAIcon } from '../../../components/LAIcons';
 import { InquireForm } from '../../../components/InquireForm';
 import { Nav } from '../../../components/Nav';
 import { Ov, Photo, Rule, SectionHead } from '../../../components/Primitives';
@@ -84,17 +85,37 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(480px, 72vh, 720px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${l.image})`,
+          backgroundImage: l.image
+            ? `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${l.image})`
+            : `var(--${l.ph})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           display: 'flex',
           alignItems: 'flex-end',
+          overflow: 'hidden',
         }}
       >
+        {!l.image && l.icon && (
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'var(--ink)',
+              opacity: 0.45,
+              pointerEvents: 'none',
+            }}
+          >
+            <LAIcon name={l.icon} size={520} />
+          </div>
+        )}
         <div
           className="section-pad"
           style={{
+            position: 'relative',
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',
@@ -108,9 +129,9 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
               fontWeight: 500,
               lineHeight: 1.05,
               letterSpacing: '-.025em',
-              color: '#fff',
+              color: l.image ? '#fff' : 'var(--ink)',
               textWrap: 'pretty',
-              textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+              textShadow: l.image ? '0 1px 24px rgba(0,0,0,0.35)' : 'none',
               margin: 0,
               maxWidth: 820,
             }}
@@ -195,15 +216,17 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
             h={320}
             ph="ph-2"
             src={l.images?.[1]}
+            icon={l.images?.[1] ? undefined : l.icon}
             alt={`${l.addr} interior`}
-            label={l.images?.[1] ? undefined : 'Photography placeholder'}
+            label={l.images?.[1] || l.icon ? undefined : 'Photography placeholder'}
           />
           <Photo
             h={320}
             ph="ph-3"
             src={l.images?.[2]}
+            icon={l.images?.[2] ? undefined : l.icon}
             alt={`${l.addr} interior`}
-            label={l.images?.[2] ? undefined : 'Photography placeholder'}
+            label={l.images?.[2] || l.icon ? undefined : 'Photography placeholder'}
           />
         </div>
         <div

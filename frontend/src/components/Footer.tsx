@@ -28,7 +28,7 @@ export function Footer() {
   return (
     <footer style={{ background: 'var(--footer-bg)', transition: 'background .3s' }}>
       <div
-        className="section-pad"
+        className="section-pad footer-grid"
         style={{
           maxWidth: 1320,
           margin: '0 auto',
@@ -73,6 +73,7 @@ export function Footer() {
             Douglas Elliman · Beverly Hills
           </div>
           <p
+            className="footer-blurb"
             style={{
               fontFamily: 'var(--font-serif), serif',
               fontSize: 14,
@@ -120,7 +121,7 @@ export function Footer() {
         ))}
       </div>
       <div
-        className="section-pad"
+        className="section-pad footer-meta"
         style={{
           maxWidth: 1320,
           margin: '0 auto',

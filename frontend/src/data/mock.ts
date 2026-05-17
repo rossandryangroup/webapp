@@ -1,3 +1,5 @@
+import type { LAIconName } from '../components/LAIcons';
+
 type Ph = 'ph-1' | 'ph-2' | 'ph-3';
 
 export type Listing = {
@@ -10,6 +12,7 @@ export type Listing = {
   ph: Ph;
   image?: string;
   images?: string[];
+  icon?: LAIconName;
   beds: string;
   baths: string;
   sqft: string;
@@ -56,15 +59,7 @@ export const LISTINGS: Listing[] = [
     price: '$1.895M',
     status: 'Active',
     ph: 'ph-2',
-    image:
-      'https://imgproxy.elliman.com/1prL9N9Xy_TJ4ds58GFAj4QgfNmtBklOQJdq-TtKcA0/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_3724d8c4-7716-4858-811f-3fee9217fb55.jpg',
-    images: [
-      'https://imgproxy.elliman.com/1prL9N9Xy_TJ4ds58GFAj4QgfNmtBklOQJdq-TtKcA0/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_3724d8c4-7716-4858-811f-3fee9217fb55.jpg',
-      'https://imgproxy.elliman.com/FG8iFZdOKGy7Jk6z6Z6LFiN84QW4bTwWIwzcm-b_dqY/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_05f3dab1-83ff-46ba-bc2f-f06547170d9a.jpg',
-      'https://imgproxy.elliman.com/9B8hq9kfCjCcafjvSKOq1BkkjcwzXDTsMvkebM4o_6U/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_2a14b681-8205-4509-8909-a61b99781455.jpg',
-      'https://imgproxy.elliman.com/c3CGsJxNdcMfdYONeRi9L4r41G-AjLcKorOdJIquh2Y/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_6e6b425e-597e-4e7d-8b04-b480d16bf197.jpg',
-      'https://imgproxy.elliman.com/deXamzPwG5fWWXXRNQ13tMRH8y8MunZMvSxYFr4M6i4/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_75724111-7c41-45bf-8700-501735bc2ddd.jpg',
-    ],
+    icon: 'mountains',
     beds: '',
     baths: '',
     sqft: '39.8 acres',
@@ -82,15 +77,7 @@ export const LISTINGS: Listing[] = [
     price: '$1.495M',
     status: 'Active',
     ph: 'ph-3',
-    image:
-      'https://imgproxy.elliman.com/FLigPxExUzZgk_1Hmd4z1jiFPW7IuwImX2MRtTAo8z8/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_03dc49d0-8b6e-406a-94a0-6e09f78a931b.jpg',
-    images: [
-      'https://imgproxy.elliman.com/FLigPxExUzZgk_1Hmd4z1jiFPW7IuwImX2MRtTAo8z8/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_03dc49d0-8b6e-406a-94a0-6e09f78a931b.jpg',
-      'https://imgproxy.elliman.com/dsSmuEcDQpT2_2zy2HaSMULawrFJZrSYzi2LpNAUwfc/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_07653e16-887e-4e12-8c05-b2db1e4a6645.jpg',
-      'https://imgproxy.elliman.com/Rs051xAHaOu6u51-wEfAPbLwB34_RlCM4Mkzcc2NPUQ/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_e7f53d89-6442-4ce0-a265-d4c40914eed3.jpg',
-      'https://imgproxy.elliman.com/Vl-RK8zcK1HhVIPKNiAXqXMlLrKhtFyT17kz0KlNhe4/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_078207af-0ab6-4b89-8d82-2871d536ed80.jpg',
-      'https://imgproxy.elliman.com/A-G6IpsstdRDBHTIsi_8TpuqvtzduW_6fGxP8BcK3hk/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_f3e2fe85-ec76-4812-853b-a79c9b3929f3.jpg',
-    ],
+    icon: 'mountains',
     beds: '',
     baths: '',
     sqft: 'Lot',

@@ -99,7 +99,7 @@ export default function PropertiesClient() {
             </Link>
           </div>
           <div>
-            <Photo h={480} ph={cover.ph} src={cover.image} alt={cover.addr} />
+            <Photo h={480} ph={cover.ph} src={cover.image} icon={cover.icon} alt={cover.addr} />
           </div>
         </div>
       </section>
@@ -157,7 +157,7 @@ export default function PropertiesClient() {
                   href={`/properties/${l.slug}`}
                   style={{ background: 'var(--bg-alt)', overflow: 'hidden', display: 'block' }}
                 >
-                  <Photo h={i === 0 ? 260 : 190} ph={l.ph} src={l.image} alt={l.addr}>
+                  <Photo h={i === 0 ? 260 : 190} ph={l.ph} src={l.image} icon={l.icon} alt={l.addr}>
                     <div style={{ position: 'absolute', top: 12, left: 12 }}>
                       <span
                         style={{
