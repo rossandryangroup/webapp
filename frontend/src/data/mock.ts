@@ -223,7 +223,53 @@ export type WalkthroughEntry = {
   by: 'Ross Groefsema' | 'Ryan Hirsh';
   ph: Ph;
   pullquote: string;
+  image: string;
 };
+
+// Editorial imagery for the marketing surfaces. Reuses the high-resolution
+// imgproxy.elliman.com photos already scraped for active listings (see
+// content/listings/listings.json) so the lifestyle/cover/related cards
+// carry the same production value as the property pages.
+const IMG = {
+  santaMonicaArtDeco:
+    'https://imgproxy.elliman.com/DIBEJTU7F8sBJRZMoLTDBGKAQ1_RuFClW_Tu4B7kDYU/quality:100/plain/https%3A%2F%2Fmedia.elliman.com%2F43683da4-9e21-42ba-931b-c4030523cd6e.jpg',
+  santaMonicaRoofDeck:
+    'https://imgproxy.elliman.com/truMBQgKLvdV5kFtXj6cm_livJlZPCaVwek1kGL1liw/quality:100/plain/https%3A%2F%2Fmedia.elliman.com%2F38e0ecb4-7788-41a1-abdf-fc86735abd8b.jpg',
+  santaMonicaInterior:
+    'https://imgproxy.elliman.com/7iFIai8q0PVgM2kzh3UjSYT8ofj8ivSukpHHKLCTcFE/quality:100/plain/https%3A%2F%2Fmedia.elliman.com%2F22ebee0f-0b90-4b80-b752-11bd017b531a.jpg',
+  santaMonicaCorner:
+    'https://imgproxy.elliman.com/tRsGhShRoxn0gL02b-ciZWZXcU6iaYXLmUtUrBiSsUM/quality:100/plain/https%3A%2F%2Fmedia.elliman.com%2F41a6776f-21a5-469b-880e-c4b3b1bd74f6.jpg',
+  santaMonicaDetail:
+    'https://imgproxy.elliman.com/O2eAq9R_nLNIk9EXitu84A0IiLcipnWAuddQ7AD3vNE/quality:100/plain/https%3A%2F%2Fmedia.elliman.com%2F5a9db277-b918-4970-8497-6698e97ec872.jpg',
+  ridgeline1:
+    'https://imgproxy.elliman.com/1prL9N9Xy_TJ4ds58GFAj4QgfNmtBklOQJdq-TtKcA0/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_3724d8c4-7716-4858-811f-3fee9217fb55.jpg',
+  ridgeline2:
+    'https://imgproxy.elliman.com/FG8iFZdOKGy7Jk6z6Z6LFiN84QW4bTwWIwzcm-b_dqY/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_05f3dab1-83ff-46ba-bc2f-f06547170d9a.jpg',
+  ridgeline3:
+    'https://imgproxy.elliman.com/9B8hq9kfCjCcafjvSKOq1BkkjcwzXDTsMvkebM4o_6U/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_2a14b681-8205-4509-8909-a61b99781455.jpg',
+  ridgeline4:
+    'https://imgproxy.elliman.com/c3CGsJxNdcMfdYONeRi9L4r41G-AjLcKorOdJIquh2Y/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583029%2F25583029_6e6b425e-597e-4e7d-8b04-b480d16bf197.jpg',
+  ridgeline5:
+    'https://imgproxy.elliman.com/FLigPxExUzZgk_1Hmd4z1jiFPW7IuwImX2MRtTAo8z8/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_03dc49d0-8b6e-406a-94a0-6e09f78a931b.jpg',
+  ridgeline6:
+    'https://imgproxy.elliman.com/dsSmuEcDQpT2_2zy2HaSMULawrFJZrSYzi2LpNAUwfc/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25583061%2F25583061_07653e16-887e-4e12-8c05-b2db1e4a6645.jpg',
+  walkStreet:
+    'https://imgproxy.elliman.com/U7Q41iIhkr83wNKEVXIhGpqPOZIH0Lt-J32_pYAGA88/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25622077%2F25622077_c799d1aa-b44d-4f16-8049-404e351f9b74.jpg',
+  walkStreetCourtyard:
+    'https://imgproxy.elliman.com/E_2QxBFtbpQYKM9L7Cdp4MZf63eSaMr8RPAfvI5K1mM/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25622077%2F25622077_52000912-9085-427e-b937-7a688ad3c34c.jpg',
+  walkStreetInterior:
+    'https://imgproxy.elliman.com/kKaADi1R12ItNiCEdiEmu-SUYBzg-b-HLpriCNVzOAg/quality:100/plain/https%3A%2F%2Fmediaservice.themls.com%2Flarge%2F25622077%2F25622077_73cf99c4-9dea-4efe-b58a-709a425a2ad7.jpg',
+  // Wikimedia LA landmarks (already proven inside article markdown).
+  greystone: 'https://upload.wikimedia.org/wikipedia/commons/5/58/Greystone_Mansion.JPG',
+  bhNight:
+    'https://upload.wikimedia.org/wikipedia/commons/6/6f/Downtown_Beverly_Hills_At_Night.jpg',
+  marinaAerial:
+    'https://upload.wikimedia.org/wikipedia/commons/6/62/Marina_Del_Rey_and_Venice_Beach_aerial_view.jpg',
+  marinaSouth:
+    'https://upload.wikimedia.org/wikipedia/commons/e/e9/Marina_Del_Rey_Looking_South.jpg',
+} as const;
+
+export const EDITORIAL_IMAGES = IMG;
 
 export const WALKTHROUGH: WalkthroughEntry[] = [
   {
@@ -236,6 +282,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-1',
     pullquote:
       'The buyers who moved in February are going to look smart by September. The ones who waited for certainty are going to keep waiting.',
+    image: IMG.greystone,
   },
   {
     slug: 'venice-still-most-interesting',
@@ -247,6 +294,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-2',
     pullquote:
       "Venice keeps its character because the people who live there fight for it. That fight isn't going away.",
+    image: IMG.marinaAerial,
   },
   {
     slug: 'trousdale-mid-century',
@@ -258,6 +306,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-3',
     pullquote:
       "The view lots in Trousdale aren't being made anymore. The houses on them can be improved.",
+    image: IMG.santaMonicaInterior,
   },
   {
     slug: 'palm-springs-october',
@@ -268,6 +317,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     by: 'Ryan Hirsh',
     ph: 'ph-1',
     pullquote: 'October is the month the desert remembers what it is supposed to be.',
+    image: IMG.ridgeline2,
   },
   {
     slug: 'beverly-hills-inventory-2026',
@@ -279,6 +329,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-2',
     pullquote:
       'Thin inventory, slower closes, more honest pricing. A healthier market than the headlines suggest.',
+    image: IMG.bhNight,
   },
   {
     slug: 'marina-del-rey-waterfront',
@@ -290,6 +341,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-3',
     pullquote:
       'Waterfront in LA is harder to find than it sounds. Marina is one of the few places it still exists at scale.',
+    image: IMG.marinaSouth,
   },
   {
     slug: 'off-market-deals',
@@ -300,6 +352,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     by: 'Ross Groefsema',
     ph: 'ph-1',
     pullquote: 'Off-market is a tool, not a strategy. When it fits, it fits well.',
+    image: IMG.santaMonicaArtDeco,
   },
   {
     slug: 'culver-city-tuesday',
@@ -310,6 +363,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     by: 'Ryan Hirsh',
     ph: 'ph-2',
     pullquote: 'Tuesday is the day a neighborhood tells you the truth about itself.',
+    image: IMG.walkStreet,
   },
   {
     slug: 'year-end-2025-recap',
@@ -321,6 +375,7 @@ export const WALKTHROUGH: WalkthroughEntry[] = [
     ph: 'ph-3',
     pullquote:
       'A year of patient money winning quietly while loud money waited for a signal that never came.',
+    image: IMG.santaMonicaRoofDeck,
   },
 ];
 

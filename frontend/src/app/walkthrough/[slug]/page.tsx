@@ -92,7 +92,7 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
           <Photo
             h={420}
             ph={w.ph}
-            src={article?.frontmatter.hero}
+            src={article?.frontmatter.hero ?? w.image}
             alt={article?.frontmatter.heroAlt ?? w.title}
           />
         </div>
@@ -209,7 +209,13 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
                 href={`/walkthrough/${r.slug}`}
                 style={{ display: 'block', background: 'var(--bg)' }}
               >
-                <Photo h={150} ph={r.ph} label={`${r.cat} · ${r.date}`} />
+                <Photo
+                  h={150}
+                  ph={r.ph}
+                  src={r.image}
+                  alt={r.title}
+                  label={`${r.cat} · ${r.date}`}
+                />
                 <div style={{ padding: '18px 18px 22px' }}>
                   <Ov style={{ marginBottom: 10 }}>{r.date}</Ov>
                   <Rule accent style={{ width: 24, marginBottom: 12 }} />

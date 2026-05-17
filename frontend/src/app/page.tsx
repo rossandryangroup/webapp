@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Footer } from '../components/Footer';
 import { Nav } from '../components/Nav';
 import { Ey, Ov, Photo, Rule } from '../components/Primitives';
-import { LISTINGS, WALKTHROUGH } from '../data/mock';
+import { EDITORIAL_IMAGES, LISTINGS, WALKTHROUGH } from '../data/mock';
 
 const SIDEBAR = [
   {
@@ -45,7 +45,9 @@ export default function HomePage() {
             <Photo
               h={460}
               ph="ph-1"
-              label="Cover photography · Beverly Hills Flats · Morning light"
+              src={EDITORIAL_IMAGES.bhNight}
+              alt="Beverly Hills at night"
+              label="Cover photography · Beverly Hills · Evening light"
             />
             <div style={{ paddingTop: 28 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
@@ -363,12 +365,26 @@ export default function HomePage() {
             <Photo
               h={0}
               ph="ph-2"
-              label="Photography · Beverly Hills interior · Placeholder"
+              src={EDITORIAL_IMAGES.santaMonicaInterior}
+              alt="Interior at 2525 Main, Santa Monica"
+              label="Interior · 2525 Main · Santa Monica"
               style={{ flex: '1 1 auto', minHeight: 200 }}
             />
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, flexShrink: 0 }}>
-              <Photo h={160} ph="ph-1" label="Exterior · Bel Air" />
-              <Photo h={160} ph="ph-3" label="Detail · Santa Monica" />
+              <Photo
+                h={160}
+                ph="ph-1"
+                src={EDITORIAL_IMAGES.ridgeline3}
+                alt="Lake Arrowhead ridge"
+                label="Exterior · Lake Arrowhead"
+              />
+              <Photo
+                h={160}
+                ph="ph-3"
+                src={EDITORIAL_IMAGES.santaMonicaCorner}
+                alt="Art Deco corner detail, Santa Monica"
+                label="Detail · Santa Monica"
+              />
             </div>
           </div>
         </div>
@@ -572,7 +588,13 @@ export default function HomePage() {
               href={`/walkthrough/${notes[0].slug}`}
               style={{ background: 'var(--bg-alt)', display: 'block' }}
             >
-              <Photo h={300} ph={notes[0].ph} label={`${notes[0].cat} · ${notes[0].date}`} />
+              <Photo
+                h={300}
+                ph={notes[0].ph}
+                src={notes[0].image}
+                alt={notes[0].title}
+                label={`${notes[0].cat} · ${notes[0].date}`}
+              />
               <div style={{ padding: '26px 26px 32px' }}>
                 <Ov style={{ marginBottom: 14 }}>
                   {notes[0].date} · {notes[0].read} read
@@ -613,7 +635,13 @@ export default function HomePage() {
                 href={`/walkthrough/${n.slug}`}
                 style={{ background: 'var(--bg-alt)', display: 'block' }}
               >
-                <Photo h={180} ph={n.ph} label={`${n.cat} · ${n.date}`} />
+                <Photo
+                  h={180}
+                  ph={n.ph}
+                  src={n.image}
+                  alt={n.title}
+                  label={`${n.cat} · ${n.date}`}
+                />
                 <div style={{ padding: '20px 20px 24px' }}>
                   <Ov style={{ marginBottom: 10 }}>
                     {n.date} · {n.read} read

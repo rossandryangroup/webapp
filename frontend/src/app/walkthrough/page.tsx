@@ -82,7 +82,7 @@ export default function WalkthroughPage() {
           </Link>
         </div>
         <div>
-          <Photo h={480} ph={lead.ph} />
+          <Photo h={480} ph={lead.ph} src={lead.image} alt={lead.title} />
         </div>
       </section>
 
@@ -140,7 +140,13 @@ export default function WalkthroughPage() {
                 href={`/walkthrough/${e.slug}`}
                 style={{ background: 'var(--bg-alt)', display: 'block' }}
               >
-                <Photo h={i === 0 ? 260 : 170} ph={e.ph} label={`${e.cat} · ${e.date}`} />
+                <Photo
+                  h={i === 0 ? 260 : 170}
+                  ph={e.ph}
+                  src={e.image}
+                  alt={e.title}
+                  label={`${e.cat} · ${e.date}`}
+                />
                 <div style={{ padding: i === 0 ? '24px 24px 28px' : '18px 18px 22px' }}>
                   <Ov style={{ marginBottom: 10 }}>
                     {e.date} · {e.read} read

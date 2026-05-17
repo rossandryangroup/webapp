@@ -4,6 +4,7 @@ import { ContraryBand, InquireBand } from '../../components/Bands';
 import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
 import { Ey, Ov, Photo, Rule, SectionHead } from '../../components/Primitives';
+import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
   title: 'About | Ross & Ryan Group',
@@ -109,7 +110,12 @@ export default function AboutPage() {
             </h1>
           </div>
           <div>
-            <Photo h={400} ph="ph-1" />
+            <Photo
+              h={400}
+              ph="ph-1"
+              src={EDITORIAL_IMAGES.santaMonicaArtDeco}
+              alt="2525 Main Street, Santa Monica"
+            />
           </div>
         </div>
         <div style={{ maxWidth: 720 }}>
