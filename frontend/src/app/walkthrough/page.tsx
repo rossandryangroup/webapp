@@ -34,7 +34,6 @@ export default function WalkthroughPage() {
       >
         <div>
           <SectionHead label="The Walkthrough" />
-          <Ey style={{ marginBottom: 14 }}>{lead.cat}</Ey>
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',

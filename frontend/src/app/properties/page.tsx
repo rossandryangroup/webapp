@@ -12,7 +12,6 @@ export default function PropertiesPage() {
   const [active, setActive] = useState('All');
 
   const cover = LISTINGS[0];
-  const sideRail = LISTINGS.slice(1, 4);
   const grid =
     active === 'All' ? LISTINGS.slice(1) : LISTINGS.slice(1).filter((l) => l.hood.includes(active));
 
@@ -29,13 +28,12 @@ export default function PropertiesPage() {
           className="grid-collapse"
           style={{
             display: 'grid',
-            gridTemplateColumns: '1fr 380px 220px',
-            gap: 44,
+            gridTemplateColumns: '1.2fr 1fr',
+            gap: 56,
             alignItems: 'start',
           }}
         >
           <div>
-            <Ey style={{ marginBottom: 16 }}>Cover Listing</Ey>
             <h1
               style={{
                 fontFamily: 'var(--font-serif), serif',
@@ -101,36 +99,7 @@ export default function PropertiesPage() {
             </Link>
           </div>
           <div>
-            <Photo h={420} ph={cover.ph} src={cover.image} alt={cover.addr} />
-          </div>
-          <div style={{ paddingTop: 4 }}>
-            <Ey style={{ marginBottom: 18 }}>Other active listings</Ey>
-            {sideRail.map((l) => (
-              <Link
-                key={l.slug}
-                href={`/properties/${l.slug}`}
-                style={{
-                  display: 'block',
-                  padding: '15px 0',
-                  borderBottom: '1px solid var(--border)',
-                }}
-              >
-                <Ey style={{ marginBottom: 7 }}>{l.hood}</Ey>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-serif), serif',
-                    fontSize: 15,
-                    fontWeight: 500,
-                    lineHeight: 1.3,
-                    color: 'var(--ink)',
-                    marginBottom: 5,
-                  }}
-                >
-                  {l.addr}
-                </div>
-                <Ov>{l.price}</Ov>
-              </Link>
-            ))}
+            <Photo h={480} ph={cover.ph} src={cover.image} alt={cover.addr} />
           </div>
         </div>
       </section>
