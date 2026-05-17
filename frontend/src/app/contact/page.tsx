@@ -4,7 +4,6 @@ import { Footer } from '../../components/Footer';
 import { InquireForm } from '../../components/InquireForm';
 import { Nav } from '../../components/Nav';
 import { Ey, SectionHead } from '../../components/Primitives';
-import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
   title: { absolute: 'Contact Ross & Ryan Group · Beverly Hills Real Estate' },
@@ -53,8 +52,8 @@ export default function ContactPage() {
         }}
       >
         <Image
-          src={EDITORIAL_IMAGES.bhNight}
-          alt=""
+          src="/beverly-hills-sign.jpg"
+          alt="Beverly Hills sign in Beverly Gardens Park"
           fill
           priority
           sizes="100vw"
