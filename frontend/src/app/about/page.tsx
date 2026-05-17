@@ -6,8 +6,19 @@ import { Nav } from '../../components/Nav';
 import { Ey, Ov, Rule, SectionHead } from '../../components/Primitives';
 
 export const metadata: Metadata = {
-  title: 'About | Ross & Ryan Group',
-  description: 'Fifteen years in the same market. Two partners, one shared point of view.',
+  title: 'About',
+  description:
+    'Fifteen years in the same market. Two partners, one shared point of view, and the kind of representation that returns your call on a Sunday.',
+  alternates: { canonical: 'https://rossandryangroup.com/about' },
+  openGraph: {
+    title: 'About | Ross & Ryan Group',
+    description:
+      'Fifteen years in the same market. Two partners, one shared point of view, and the kind of representation that returns your call on a Sunday.',
+    url: 'https://rossandryangroup.com/about',
+    images: [{ url: '/og-about.jpg', width: 1200, height: 630, alt: 'Ross & Ryan Group · About' }],
+    type: 'profile',
+  },
+  twitter: { card: 'summary_large_image', images: ['/og-about.jpg'] },
 };
 
 const CONTRARY = [
