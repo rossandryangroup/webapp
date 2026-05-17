@@ -5,7 +5,7 @@ import { ContraryBand } from '../../../components/Bands';
 import { Footer } from '../../../components/Footer';
 import { Nav } from '../../../components/Nav';
 import { Ov, Photo, Rule, SectionHead } from '../../../components/Primitives';
-import { getListing, LISTINGS } from '../../../data/mock';
+import { getListing, LISTINGS, RECENT_COMPS_BY_SLUG } from '../../../data/mock';
 
 type Params = { slug: string };
 
@@ -49,16 +49,17 @@ const CONTRARY = [
   },
 ];
 
-const COMPS = [
-  { addr: '887 Rexford Dr', close: 'Feb 2026', beds: '5 / 5', sqft: '5,900', price: '$8.2M' },
-  { addr: '924 Foothill Rd', close: 'Jan 2026', beds: '4 / 4', sqft: '5,400', price: '$7.6M' },
-  { addr: '1015 Lexington Rd', close: 'Nov 2025', beds: '5 / 5.5', sqft: '6,100', price: '$8.75M' },
-];
-
 export default async function PropertyPage({ params }: { params: Promise<Params> }) {
   const { slug } = await params;
   const l = getListing(slug);
   if (!l) notFound();
+  const comps = RECENT_COMPS_BY_SLUG[slug] ?? [];
+  const bedBath = l.beds && l.baths ? `${l.beds} / ${l.baths}` : '';
+  const stats: Array<[string, string]> = [
+    [l.price, 'Asking price'],
+    [bedBath, 'Bed / Bath'],
+    [l.sqft, l.beds ? 'Interior' : 'Size'],
+  ].filter(([v]) => v && v.trim()) as Array<[string, string]>;
 
   return (
     <>
@@ -93,11 +94,7 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
             {l.addr}
           </h1>
           <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
-            {[
-              [l.price, 'Asking price'],
-              [`${l.beds} / ${l.baths}`, 'Bed / Bath'],
-              [l.sqft, 'Interior'],
-            ].map(([v, lbl]) => (
+            {stats.map(([v, lbl]) => (
               <div key={lbl}>
                 <div
                   style={{
@@ -149,7 +146,7 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           </div>
         </div>
         <div>
-          <Photo h={500} ph={l.ph} />
+          <Photo h={500} ph={l.ph} src={l.image} alt={l.addr} />
         </div>
       </section>
 
@@ -165,8 +162,20 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
             marginBottom: 64,
           }}
         >
-          <Photo h={320} ph="ph-2" label="Living room · south light" />
-          <Photo h={320} ph="ph-3" label="Primary suite" />
+          <Photo
+            h={320}
+            ph="ph-2"
+            src={l.images?.[1]}
+            alt={`${l.addr} interior`}
+            label={l.images?.[1] ? undefined : 'Photography placeholder'}
+          />
+          <Photo
+            h={320}
+            ph="ph-3"
+            src={l.images?.[2]}
+            alt={`${l.addr} interior`}
+            label={l.images?.[2] ? undefined : 'Photography placeholder'}
+          />
         </div>
         <div
           className="grid-collapse"
@@ -251,7 +260,7 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
                   </div>
                 ))}
               </div>
-              {COMPS.map((c) => (
+              {comps.map((c) => (
                 <div
                   key={c.addr}
                   style={{
@@ -271,9 +280,14 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
                   >
                     {c.addr}
                   </div>
-                  {[c.close, c.beds, c.sqft, c.price].map((v) => (
+                  {[
+                    ['close', c.close],
+                    ['beds', c.beds],
+                    ['sqft', c.sqft],
+                    ['price', c.price],
+                  ].map(([k, v]) => (
                     <div
-                      key={v}
+                      key={k}
                       style={{
                         fontFamily: 'var(--font-sans), sans-serif',
                         fontSize: 12,

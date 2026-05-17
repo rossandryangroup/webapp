@@ -27,12 +27,18 @@ export const Hillside = ({
 export const Photo = ({
   h = 300,
   ph = 'ph-1',
+  src,
+  alt = '',
+  objectPosition = 'center',
   label,
   children,
   style: sx = {},
 }: {
   h?: number;
   ph?: 'ph-1' | 'ph-2' | 'ph-3';
+  src?: string;
+  alt?: string;
+  objectPosition?: string;
   label?: string;
   children?: ReactNode;
   style?: CSSProperties;
@@ -40,13 +46,29 @@ export const Photo = ({
   <div
     style={{
       height: h,
-      background: `var(--${ph})`,
+      background: src ? 'var(--bg-alt)' : `var(--${ph})`,
       position: 'relative',
       overflow: 'hidden',
       flexShrink: 0,
       ...sx,
     }}
   >
+    {src && (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={src}
+        alt={alt}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          objectPosition,
+          display: 'block',
+        }}
+      />
+    )}
     {children}
     {label && (
       <div

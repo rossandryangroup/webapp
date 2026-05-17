@@ -104,7 +104,7 @@ export default function PropertiesPage() {
             </Link>
           </div>
           <div>
-            <Photo h={420} ph="ph-1" />
+            <Photo h={420} ph={cover.ph} src={cover.image} alt={cover.addr} />
           </div>
           <div style={{ paddingTop: 4 }}>
             <Ey style={{ marginBottom: 18 }}>Also in this issue</Ey>
@@ -191,7 +191,7 @@ export default function PropertiesPage() {
                   href={`/properties/${l.slug}`}
                   style={{ background: 'var(--bg-alt)', overflow: 'hidden', display: 'block' }}
                 >
-                  <Photo h={i === 0 ? 260 : 190} ph={l.ph}>
+                  <Photo h={i === 0 ? 260 : 190} ph={l.ph} src={l.image} alt={l.addr}>
                     <div style={{ position: 'absolute', top: 12, left: 12 }}>
                       <span
                         style={{

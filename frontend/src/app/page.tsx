@@ -200,7 +200,7 @@ export default function HomePage() {
                 href={`/properties/${l.slug}`}
                 style={{ background: 'var(--bg-alt)', overflow: 'hidden', display: 'block' }}
               >
-                <Photo h={i === 0 ? 300 : 200} ph={l.ph} label={l.hood}>
+                <Photo h={i === 0 ? 300 : 200} ph={l.ph} src={l.image} alt={l.addr} label={l.hood}>
                   <div style={{ position: 'absolute', top: 14, left: 14 }}>
                     <span
                       style={{
