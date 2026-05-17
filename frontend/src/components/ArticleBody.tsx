@@ -6,24 +6,31 @@ import remarkGfm from 'remark-gfm';
 
 const paragraph: CSSProperties = {
   fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 16,
+  fontSize: 17,
   lineHeight: 1.85,
   color: 'var(--ink-soft)',
-  marginBottom: 22,
+  marginBottom: 24,
   textWrap: 'pretty',
-  maxWidth: 680,
+};
+
+const lead: CSSProperties = {
+  ...paragraph,
+  fontFamily: 'var(--font-serif), serif',
+  fontSize: 22,
+  lineHeight: 1.5,
+  color: 'var(--ink)',
+  marginBottom: 32,
 };
 
 const h2: CSSProperties = {
   fontFamily: 'var(--font-serif), serif',
-  fontSize: 28,
+  fontSize: 30,
   fontWeight: 500,
   lineHeight: 1.2,
   color: 'var(--ink)',
-  marginTop: 44,
-  marginBottom: 16,
+  marginTop: 48,
+  marginBottom: 18,
   textWrap: 'pretty',
-  maxWidth: 680,
 };
 
 const h3: CSSProperties = {
@@ -36,58 +43,123 @@ const h3: CSSProperties = {
   marginTop: 32,
   marginBottom: 12,
   textWrap: 'pretty',
-  maxWidth: 680,
 };
 
 const blockquote: CSSProperties = {
-  margin: '36px 0',
-  paddingLeft: 24,
-  borderLeft: '2px solid var(--accent)',
+  margin: '40px 0',
+  padding: '24px 28px',
+  background: 'var(--bg-alt)',
+  borderLeft: '3px solid var(--accent)',
   fontFamily: 'var(--font-serif), serif',
-  fontSize: 22,
+  fontSize: 24,
   fontStyle: 'italic',
   fontWeight: 400,
   lineHeight: 1.4,
   color: 'var(--ink)',
   textWrap: 'pretty',
-  maxWidth: 680,
 };
 
 const ul: CSSProperties = {
-  margin: '0 0 22px 20px',
+  margin: '0 0 24px 0',
   padding: 0,
+  listStyle: 'none',
   fontFamily: 'var(--font-sans), sans-serif',
-  fontSize: 16,
+  fontSize: 17,
   lineHeight: 1.85,
   color: 'var(--ink-soft)',
-  maxWidth: 680,
 };
 
-const li: CSSProperties = { marginBottom: 8 };
+const ol: CSSProperties = {
+  ...ul,
+  listStyle: 'decimal',
+  paddingLeft: 22,
+};
+
+const li: CSSProperties = {
+  marginBottom: 10,
+  position: 'relative',
+  paddingLeft: 22,
+};
 
 const hr: CSSProperties = {
   border: 'none',
   borderTop: '1px solid var(--border-md)',
-  margin: '36px 0',
+  margin: '40px 0',
 };
 
-const a: CSSProperties = { color: 'var(--accent)', textDecoration: 'underline' };
+const a: CSSProperties = {
+  color: 'var(--accent)',
+  textDecoration: 'underline',
+  textUnderlineOffset: 3,
+};
 
 const strong: CSSProperties = { color: 'var(--ink)', fontWeight: 600 };
 
+const tableWrap: CSSProperties = {
+  margin: '32px 0',
+  overflowX: 'auto',
+  border: '1px solid var(--border-md)',
+};
+
+const table: CSSProperties = {
+  width: '100%',
+  borderCollapse: 'collapse',
+  fontFamily: 'var(--font-sans), sans-serif',
+  fontSize: 14,
+};
+
+const th: CSSProperties = {
+  textAlign: 'left',
+  padding: '14px 16px',
+  fontWeight: 600,
+  fontSize: 10,
+  letterSpacing: '.14em',
+  textTransform: 'uppercase',
+  color: 'var(--ink-mute)',
+  borderBottom: '1px solid var(--border-md)',
+  background: 'var(--bg-alt)',
+};
+
+const td: CSSProperties = {
+  padding: '14px 16px',
+  color: 'var(--ink-soft)',
+  borderBottom: '1px solid var(--border)',
+};
+
 export function ArticleBody({ markdown }: { markdown: string }) {
+  let leadHandled = false;
   return (
     <div style={{ display: 'flow-root' }}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{
-          p: (props) => <p style={paragraph}>{props.children}</p>,
+          p: (props) => {
+            if (!leadHandled) {
+              leadHandled = true;
+              return <p style={lead}>{props.children}</p>;
+            }
+            return <p style={paragraph}>{props.children}</p>;
+          },
           h2: (props) => <h2 style={h2}>{props.children}</h2>,
           h3: (props) => <h3 style={h3}>{props.children}</h3>,
           blockquote: (props) => <blockquote style={blockquote}>{props.children}</blockquote>,
           ul: (props) => <ul style={ul}>{props.children}</ul>,
-          ol: (props) => <ol style={{ ...ul, listStyle: 'decimal' }}>{props.children}</ol>,
-          li: (props) => <li style={li}>{props.children}</li>,
+          ol: (props) => <ol style={ol}>{props.children}</ol>,
+          li: (props) => (
+            <li style={li}>
+              <span
+                style={{
+                  position: 'absolute',
+                  left: 0,
+                  top: 12,
+                  width: 10,
+                  height: 1,
+                  background: 'var(--accent)',
+                }}
+              />
+              {props.children}
+            </li>
+          ),
           hr: () => <hr style={hr} />,
           a: ({ href, children }) => (
             <a href={href} style={a}>
@@ -96,31 +168,30 @@ export function ArticleBody({ markdown }: { markdown: string }) {
           ),
           strong: (props) => <strong style={strong}>{props.children}</strong>,
           em: (props) => <em style={{ fontStyle: 'italic' }}>{props.children}</em>,
+          table: (props) => (
+            <div style={tableWrap}>
+              <table style={table}>{props.children}</table>
+            </div>
+          ),
+          thead: (props) => <thead>{props.children}</thead>,
+          tbody: (props) => <tbody>{props.children}</tbody>,
+          tr: (props) => <tr>{props.children}</tr>,
+          th: (props) => <th style={th}>{props.children}</th>,
+          td: (props) => <td style={td}>{props.children}</td>,
           img: ({ src, alt }) => (
             <span
               style={{
-                float: 'right',
-                clear: 'right',
-                width: 'clamp(300px, 38%, 460px)',
-                marginLeft: 28,
-                marginRight: 0,
-                marginTop: 8,
-                marginBottom: 16,
+                display: 'block',
+                margin: '32px 0',
                 background: 'var(--bg-alt)',
-                shapeOutside: 'margin-box',
               }}
-              className="article-inline-image"
             >
-              {/* biome-ignore lint/performance/noImgElement: editorial inline images, sized by parent */}
+              {/* biome-ignore lint/performance/noImgElement: editorial inline images */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={typeof src === 'string' ? src : ''}
                 alt={alt ?? ''}
-                style={{
-                  width: '100%',
-                  height: 'auto',
-                  display: 'block',
-                }}
+                style={{ width: '100%', height: 'auto', display: 'block' }}
               />
               {alt && (
                 <span

@@ -13,6 +13,15 @@ What the citywide median hides is that Beverly Hills is two markets pretending t
 
 ![Downtown Beverly Hills at night](https://upload.wikimedia.org/wikipedia/commons/6/6f/Downtown_Beverly_Hills_At_Night.jpg)
 
+The numbers behind that picture, side by side.
+
+| Band        | Avg DOM   | Sale to list | Typical offers |
+| ----------- | --------- | ------------ | -------------- |
+| $3M to $5M  | 38 days   | 93.1%        | 2 to 3         |
+| $5M to $8M  | 64 days   | 91.4%        | 1 to 2         |
+| $8M to $15M | 122 days  | 88.6%        | 0 to 1         |
+| $15M+       | 180+ days | 84.0%        | sporadic       |
+
 Above $8M is a different animal. The trophy stock north of Sunset, the gated estates in the post-office triangle, the Trousdale view lots. Listings sit for six months. Sellers refuse to chase. The absorption rate inverts. The citywide median for March was up 29.4% year over year, but that number is pulled by a thin tail of $20M-plus closes. It is not broad-based appreciation. It is the same five or six houses moving the average.
 
 The practical version for a buyer in the $3M to $8M band is this. You have negotiating room you did not have in 2021. You probably will not have it again if rates come down. The seller who priced for 2021 and is now in month four of the listing is a different person than they were in month one, and the spread between list and your offer is wider than it looks. Make the offer.

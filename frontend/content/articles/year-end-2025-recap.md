@@ -10,7 +10,18 @@ The setup at the start of the year was a market still recovering from the 2022 r
 
 What actually happened underneath the macro was that the buyers who closed in 2025 were the ones who stopped waiting for rates to drop and started buying on fundamentals. They wrote offers on the right house, not the right month. The buyers who waited for the rate cut, the price cut, the next quarter, or the next election are still waiting, and the inventory they are waiting on is mostly gone.
 
-The Westside numbers tell the story cleanly. Beverly Hills closed the year at $5.7M median, up 4.1 percent year-over-year, with average days-on-market at 68, down from 84 at the same point in 2024. Pacific Palisades, Brentwood, and Bel Air all finished in similar territory. Inventory was thin without being scarce. Sale-to-list ratios sat in the 91 to 93 percent band citywide, which is a healthier number than 2021's 99 percent peak (the 2021 number was a bubble metric and we should stop comparing to it).
+The Westside numbers tell the story cleanly.
+
+| Submarket             | 2025 median | YoY   | Avg DOM | Sale to list |
+| --------------------- | ----------- | ----- | ------- | ------------ |
+| Beverly Hills (90210) | $5.7M       | +4.1% | 68      | 91.4%        |
+| Bel Air               | $7.2M       | +2.8% | 96      | 89.5%        |
+| Pacific Palisades     | $4.4M       | +3.3% | 52      | 92.7%        |
+| Brentwood             | $3.6M       | +5.0% | 44      | 93.2%        |
+| Marina del Rey        | $2.05M      | +6.1% | 38      | 94.5%        |
+| Trousdale Estates     | $14.8M      | -2.4% | 138     | 86.1%        |
+
+Beverly Hills closed the year at $5.7M median, up 4.1 percent year-over-year, with average days-on-market at 68, down from 84 at the same point in 2024. Pacific Palisades, Brentwood, and Bel Air all finished in similar territory. Inventory was thin without being scarce. Sale-to-list ratios sat in the 91 to 93 percent band citywide, which is a healthier number than 2021's 99 percent peak (the 2021 number was a bubble metric and we should stop comparing to it).
 
 The submarket that surprised us most was Marina del Rey. Waterfront inventory under $5M moved faster in 2025 than in any year since 2018. Median DOM on the Marina Peninsula closed at 38 days. Three of our four closings in MDR this year went pending in under three weeks. The narrative had been that the Marina was a quieter, slower second-tier waterfront story. The reality in 2025 was that the buyer pool finally caught up to the supply, and the value-per-dollar story (waterfront, slip included, a real lifestyle, fifteen minutes to LAX) became impossible to argue against.
 

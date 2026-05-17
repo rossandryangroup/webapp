@@ -171,6 +171,13 @@ body {
     grid-template-columns: 1fr !important;
     gap: 2px !important;
   }
+  .article-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .article-grid aside {
+    position: static !important;
+  }
   .nav-links-hide-mobile {
     display: none !important;
   }

@@ -15,6 +15,14 @@ The Marina is three neighborhoods stacked on top of each other and they reward k
 
 The lifestyle the comps do not price in is the actual reason the Marina works. A slip on your dock or a five-minute walk to a boat that you can take out the same afternoon. The Ballona Wetlands on the south side, great blue herons and snowy egrets at sunrise, the photographers who know about it and the runners who do not. The Marvin Braude bike path runs from the breakwater all the way to Will Rogers without a single stoplight. Sunset on Fisherman's Village with none of the Venice boardwalk circus.
 
+The three Marina submarkets line up like this.
+
+| Submarket         | Style                      | Median active | Boat slip               |
+| ----------------- | -------------------------- | ------------- | ----------------------- |
+| Peninsula         | Walk-street SFR / townhome | $2.91M        | Yes, dock or short walk |
+| Silver Strand     | 1960s SFR, lot value       | $2.4M         | Within neighborhood     |
+| Via Marina towers | Full-service condo         | $1.8M         | Leased dock             |
+
 What three to five million actually buys in MDR right now is a 3-bedroom waterfront townhome with a private slip, or a renovated single-family on a Peninsula walk-street. The same money in the Venice Canals gets you a tighter 2-bed Craftsman three blocks off Abbot Kinney with no parking and no water. Both are fine houses. They are not the same purchase.
 
 The argument against the Marina has always been that it is "not Venice," which is the same thing as saying it is quieter. The walk-streets do not have a Tuesday-night drum circle. The cafes are not packed on a Sunday. You can park. You can hear the gulls. The Pacific is two blocks away in one direction and the bird sanctuary is one block in the other.

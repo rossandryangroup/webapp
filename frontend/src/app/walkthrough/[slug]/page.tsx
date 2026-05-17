@@ -2,11 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArticleBody } from '../../../components/ArticleBody';
+import { ArticleSidebar } from '../../../components/ArticleSidebar';
 import { InquireBand } from '../../../components/Bands';
 import { Footer } from '../../../components/Footer';
 import { Nav } from '../../../components/Nav';
 import { Ey, Hillside, Ov, Photo, Rule, SectionHead } from '../../../components/Primitives';
 import { getWalkthrough, WALKTHROUGH } from '../../../data/mock';
+import { SIDEBAR } from '../../../data/walkthrough-sidebar';
 import { getArticle } from '../../../lib/articles';
 
 type Params = { slug: string };
@@ -33,6 +35,7 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
   if (!w) notFound();
 
   const article = getArticle(slug);
+  const sidebar = SIDEBAR[slug] ?? { icon: 'palms' as const, marker: 'LOS ANGELES', stats: [] };
   const related = WALKTHROUGH.filter((x) => x.slug !== w.slug).slice(0, 3);
 
   return (
@@ -96,70 +99,91 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
       </section>
 
       <article style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px 80px' }}>
-        {article ? (
-          <ArticleBody markdown={article.content} />
-        ) : (
-          <div style={{ maxWidth: PROSE }}>
-            <p
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 16,
-                lineHeight: 1.85,
-                color: 'var(--ink-soft)',
-                marginBottom: 22,
-                textWrap: 'pretty',
-              }}
-            >
-              This piece is being written. In the meantime, here is what the author had to say about
-              it.
-            </p>
-            <div
-              style={{
-                margin: '36px 0',
-                paddingLeft: 24,
-                borderLeft: '2px solid var(--accent)',
-              }}
-            >
-              <div
+        <div
+          className="article-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'minmax(0, 1fr) 360px',
+            gap: 72,
+            alignItems: 'start',
+          }}
+        >
+          <div style={{ minWidth: 0 }}>
+            {article ? (
+              <ArticleBody markdown={article.content} />
+            ) : (
+              <div style={{ maxWidth: PROSE }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 16,
+                    lineHeight: 1.85,
+                    color: 'var(--ink-soft)',
+                    marginBottom: 22,
+                    textWrap: 'pretty',
+                  }}
+                >
+                  This piece is being written. In the meantime, here is what the author had to say
+                  about it.
+                </p>
+                <div
+                  style={{
+                    margin: '36px 0',
+                    paddingLeft: 24,
+                    borderLeft: '2px solid var(--accent)',
+                  }}
+                >
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-serif), serif',
+                      fontSize: 22,
+                      fontStyle: 'italic',
+                      fontWeight: 400,
+                      lineHeight: 1.4,
+                      color: 'var(--ink)',
+                      textWrap: 'pretty',
+                    }}
+                  >
+                    &ldquo;{w.pullquote}&rdquo;
+                  </div>
+                  <Ov style={{ marginTop: 10 }}>
+                    {w.by} · {w.date.split(',')[0]}
+                  </Ov>
+                </div>
+              </div>
+            )}
+
+            <Rule style={{ marginBottom: 18, marginTop: 48 }} />
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+              <Hillside size={36} color="var(--ink-mute)" />
+              <Ov>Published {w.date} · Beverly Hills</Ov>
+              <div style={{ flex: 1 }} />
+              <Link
+                href="/walkthrough"
                 style={{
-                  fontFamily: 'var(--font-serif), serif',
-                  fontSize: 22,
-                  fontStyle: 'italic',
-                  fontWeight: 400,
-                  lineHeight: 1.4,
-                  color: 'var(--ink)',
-                  textWrap: 'pretty',
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: '.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--ink-mute)',
+                  borderBottom: '1px solid var(--border-md)',
+                  paddingBottom: 1,
                 }}
               >
-                &ldquo;{w.pullquote}&rdquo;
-              </div>
-              <Ov style={{ marginTop: 10 }}>
-                {w.by} · {w.date.split(',')[0]}
-              </Ov>
+                ← The Walkthrough
+              </Link>
             </div>
           </div>
-        )}
 
-        <Rule style={{ marginBottom: 18, marginTop: 40 }} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-          <Hillside size={36} color="var(--ink-mute)" />
-          <Ov>Published {w.date} · Beverly Hills</Ov>
-          <div style={{ flex: 1 }} />
-          <Link
-            href="/walkthrough"
-            style={{
-              fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: '.14em',
-              textTransform: 'uppercase',
-              color: 'var(--ink-mute)',
-              borderBottom: '1px solid var(--border-md)',
-              paddingBottom: 1,
-            }}
-          >
-            ← The Walkthrough
-          </Link>
+          <ArticleSidebar
+            icon={sidebar.icon}
+            marker={sidebar.marker}
+            pullquote={w.pullquote}
+            by={w.by}
+            date={w.date}
+            stats={sidebar.stats}
+          />
         </div>
       </article>
 
