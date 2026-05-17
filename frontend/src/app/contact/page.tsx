@@ -30,7 +30,7 @@ const PARTNERS = [
   {
     name: 'Ryan Hirsh',
     img: 'ryan',
-    phone: '(310) 595-3888',
+    phone: '(512) 810-0171',
     email: 'ryan@rossandryangroup.com',
     bio: 'Fifteen years in the market. Desert person. Has a low tolerance for real estate theater. Will give you the real number before you fall in love with a house.',
   },
