@@ -72,63 +72,73 @@ const strong: CSSProperties = { color: 'var(--ink)', fontWeight: 600 };
 
 export function ArticleBody({ markdown }: { markdown: string }) {
   return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
-      components={{
-        p: (props) => <p style={paragraph}>{props.children}</p>,
-        h2: (props) => <h2 style={h2}>{props.children}</h2>,
-        h3: (props) => <h3 style={h3}>{props.children}</h3>,
-        blockquote: (props) => <blockquote style={blockquote}>{props.children}</blockquote>,
-        ul: (props) => <ul style={ul}>{props.children}</ul>,
-        ol: (props) => <ol style={{ ...ul, listStyle: 'decimal' }}>{props.children}</ol>,
-        li: (props) => <li style={li}>{props.children}</li>,
-        hr: () => <hr style={hr} />,
-        a: ({ href, children }) => (
-          <a href={href} style={a}>
-            {children}
-          </a>
-        ),
-        strong: (props) => <strong style={strong}>{props.children}</strong>,
-        em: (props) => <em style={{ fontStyle: 'italic' }}>{props.children}</em>,
-        img: ({ src, alt }) => (
-          <span
-            style={{
-              display: 'block',
-              margin: '36px -80px',
-              background: 'var(--bg-alt)',
-            }}
-          >
-            {/* biome-ignore lint/performance/noImgElement: editorial inline images, sized by parent */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={typeof src === 'string' ? src : ''}
-              alt={alt ?? ''}
+    <div style={{ display: 'flow-root' }}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          p: (props) => <p style={paragraph}>{props.children}</p>,
+          h2: (props) => <h2 style={h2}>{props.children}</h2>,
+          h3: (props) => <h3 style={h3}>{props.children}</h3>,
+          blockquote: (props) => <blockquote style={blockquote}>{props.children}</blockquote>,
+          ul: (props) => <ul style={ul}>{props.children}</ul>,
+          ol: (props) => <ol style={{ ...ul, listStyle: 'decimal' }}>{props.children}</ol>,
+          li: (props) => <li style={li}>{props.children}</li>,
+          hr: () => <hr style={hr} />,
+          a: ({ href, children }) => (
+            <a href={href} style={a}>
+              {children}
+            </a>
+          ),
+          strong: (props) => <strong style={strong}>{props.children}</strong>,
+          em: (props) => <em style={{ fontStyle: 'italic' }}>{props.children}</em>,
+          img: ({ src, alt }) => (
+            <span
               style={{
-                width: '100%',
-                height: 'auto',
-                display: 'block',
+                float: 'right',
+                clear: 'right',
+                width: 'clamp(280px, 42%, 380px)',
+                marginLeft: 28,
+                marginRight: 0,
+                marginTop: 8,
+                marginBottom: 16,
+                background: 'var(--bg-alt)',
+                shapeOutside: 'margin-box',
               }}
-            />
-            {alt && (
-              <span
+              className="article-inline-image"
+            >
+              {/* biome-ignore lint/performance/noImgElement: editorial inline images, sized by parent */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={typeof src === 'string' ? src : ''}
+                alt={alt ?? ''}
                 style={{
+                  width: '100%',
+                  height: 'auto',
                   display: 'block',
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 10,
-                  letterSpacing: '.12em',
-                  textTransform: 'uppercase',
-                  color: 'var(--ink-mute)',
-                  padding: '10px 80px 0',
                 }}
-              >
-                {alt}
-              </span>
-            )}
-          </span>
-        ),
-      }}
-    >
-      {markdown}
-    </ReactMarkdown>
+              />
+              {alt && (
+                <span
+                  style={{
+                    display: 'block',
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 10,
+                    letterSpacing: '.12em',
+                    textTransform: 'uppercase',
+                    color: 'var(--ink-mute)',
+                    padding: '10px 14px 12px',
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {alt}
+                </span>
+              )}
+            </span>
+          ),
+        }}
+      >
+        {markdown}
+      </ReactMarkdown>
+    </div>
   );
 }
