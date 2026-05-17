@@ -51,7 +51,6 @@ export default function HomePage() {
               <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
                 <Ey>Cover Feature</Ey>
                 <div style={{ height: 1, flex: 1, background: 'var(--border)' }} />
-                <Ov>Beverly Hills Flats · May 2026</Ov>
               </div>
               <h1
                 style={{
@@ -102,7 +101,6 @@ export default function HomePage() {
           </div>
 
           <div style={{ paddingTop: 4 }}>
-            <Ey style={{ marginBottom: 18 }}>Also in this issue</Ey>
             {SIDEBAR.map((s) => (
               <div
                 key={s.title}
@@ -147,8 +145,11 @@ export default function HomePage() {
       </section>
 
       {/* Featured Properties */}
-      <section className="section-pad" style={{ padding: '80px 40px' }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <section style={{ padding: '80px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
           <div
             style={{
               display: 'flex',
@@ -374,15 +375,13 @@ export default function HomePage() {
       </section>
 
       {/* Team */}
-      <section
-        className="section-pad"
-        style={{ padding: '80px 40px', borderBottom: '1px solid var(--border)' }}
-      >
+      <section style={{ padding: '80px 0', borderBottom: '1px solid var(--border)' }}>
         <div
-          className="grid-collapse"
+          className="grid-collapse section-pad"
           style={{
             maxWidth: 1320,
             margin: '0 auto',
+            padding: '0 40px',
             display: 'grid',
             gridTemplateColumns: '1fr 1.8fr',
             gap: 80,
@@ -513,8 +512,11 @@ export default function HomePage() {
       </section>
 
       {/* Journal */}
-      <section className="section-pad" style={{ padding: '80px 40px' }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <section style={{ padding: '80px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
           <div
             style={{
               display: 'flex',

@@ -52,7 +52,7 @@ export default function ContactPage() {
         }}
       >
         <div>
-          <SectionHead label="Get in touch" note="Beverly Hills · May 2026" />
+          <SectionHead label="Get in touch" note="Beverly Hills" />
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',
@@ -73,11 +73,11 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section
-        className="section-pad"
-        style={{ borderTop: '1px solid var(--border)', padding: '72px 40px' }}
-      >
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <section style={{ borderTop: '1px solid var(--border)', padding: '72px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
           <SectionHead label="Ross + Ryan" note="Founding Partners" />
           <div
             className="grid-collapse"
@@ -167,18 +167,18 @@ export default function ContactPage() {
       </section>
 
       <section
-        className="section-pad"
         style={{
           background: 'var(--bg-alt)',
           borderTop: '1px solid var(--border)',
-          padding: '72px 40px',
+          padding: '72px 0',
         }}
       >
         <div
-          className="grid-collapse"
+          className="grid-collapse section-pad"
           style={{
             maxWidth: 1320,
             margin: '0 auto',
+            padding: '0 40px',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 80,

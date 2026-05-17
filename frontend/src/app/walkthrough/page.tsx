@@ -33,7 +33,7 @@ export default function WalkthroughPage() {
         }}
       >
         <div>
-          <SectionHead label="The current issue" note="Ross & Ryan · Issue 6 · May 2026" />
+          <SectionHead label="The Walkthrough" />
           <Ey style={{ marginBottom: 14 }}>{lead.cat}</Ey>
           <h1
             style={{
@@ -86,11 +86,11 @@ export default function WalkthroughPage() {
         </div>
       </section>
 
-      <section
-        className="section-pad"
-        style={{ borderTop: '1px solid var(--border)', padding: '56px 40px' }}
-      >
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <section style={{ borderTop: '1px solid var(--border)', padding: '56px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
           <div
             style={{
               display: 'flex',
@@ -124,7 +124,7 @@ export default function WalkthroughPage() {
               </button>
             ))}
           </div>
-          <SectionHead label="In this issue" note="May 2026 · Issue 6" />
+          <SectionHead label="Recent entries" />
           <div
             className="grid-collapse-3"
             style={{
@@ -189,15 +189,17 @@ export default function WalkthroughPage() {
       </section>
 
       <section
-        className="section-pad"
         style={{
           background: 'var(--bg-alt)',
           borderTop: '1px solid var(--border)',
-          padding: '72px 40px',
+          padding: '72px 0',
         }}
       >
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <SectionHead label="Archive" note="All entries · 2025 to 2026" />
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
+          <SectionHead label="Archive" />
           <div
             style={{
               display: 'grid',

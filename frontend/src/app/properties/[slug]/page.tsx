@@ -150,12 +150,13 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
         </div>
       </section>
 
-      <section className="section-pad" style={{ padding: '0 40px 72px' }}>
+      <section style={{ padding: '0 0 72px' }}>
         <div
-          className="grid-collapse"
+          className="grid-collapse section-pad"
           style={{
             maxWidth: 1320,
             margin: '0 auto',
+            padding: '0 40px',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 3,
@@ -178,10 +179,11 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           />
         </div>
         <div
-          className="grid-collapse"
+          className="grid-collapse section-pad"
           style={{
             maxWidth: 1320,
             margin: '0 auto',
+            padding: '0 40px',
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
             gap: 80,

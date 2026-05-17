@@ -93,7 +93,7 @@ export default function AboutPage() {
           }}
         >
           <div>
-            <SectionHead label="About the team" note="Ross & Ryan Group · Founded 2010" />
+            <SectionHead label="About the team" />
             <h1
               style={{
                 fontFamily: 'var(--font-serif), serif',
@@ -164,18 +164,18 @@ export default function AboutPage() {
       </section>
 
       <section
-        className="section-pad"
         style={{
           background: 'var(--bg-alt)',
           borderTop: '1px solid var(--border)',
-          padding: '72px 40px',
+          padding: '72px 0',
         }}
       >
         <div
-          className="grid-collapse"
+          className="grid-collapse section-pad"
           style={{
             maxWidth: 1320,
             margin: '0 auto',
+            padding: '0 40px',
             display: 'grid',
             gridTemplateColumns: '240px 1fr',
             gap: 72,
@@ -242,8 +242,11 @@ export default function AboutPage() {
         items={CONTRARY}
       />
 
-      <section className="section-pad" style={{ padding: '72px 40px' }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <section style={{ padding: '72px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
           <SectionHead label="The partners" />
           {PARTNERS.map((p, i) => (
             <div

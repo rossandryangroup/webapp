@@ -24,10 +24,7 @@ export default function PropertiesPage() {
         className="section-pad"
         style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 72px' }}
       >
-        <SectionHead
-          label="This month's featured listings"
-          note="Beverly Hills · Issue 6 · May 2026"
-        />
+        <SectionHead label="This month's featured listings" />
         <div
           className="grid-collapse"
           style={{
@@ -107,7 +104,7 @@ export default function PropertiesPage() {
             <Photo h={420} ph={cover.ph} src={cover.image} alt={cover.addr} />
           </div>
           <div style={{ paddingTop: 4 }}>
-            <Ey style={{ marginBottom: 18 }}>Also in this issue</Ey>
+            <Ey style={{ marginBottom: 18 }}>Other active listings</Ey>
             {sideRail.map((l) => (
               <Link
                 key={l.slug}
@@ -138,12 +135,12 @@ export default function PropertiesPage() {
         </div>
       </section>
 
-      <section
-        className="section-pad"
-        style={{ borderTop: '1px solid var(--border)', padding: '56px 40px' }}
-      >
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <SectionHead label="Active listings" note="May 2026" />
+      <section style={{ borderTop: '1px solid var(--border)', padding: '56px 0' }}>
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
+          <SectionHead label="Active listings" />
           <div style={{ display: 'flex', gap: 4, flexWrap: 'wrap', marginBottom: 36 }}>
             <Ov style={{ marginRight: 12, alignSelf: 'center' }}>Neighborhood</Ov>
             {NEIGHBORHOODS.map((f) => (

@@ -14,14 +14,13 @@ export function ContraryBand({
 }) {
   return (
     <section
-      className="section-pad"
       style={{
         background: 'var(--contrary-bg)',
-        padding: '80px 40px',
+        padding: '80px 0',
         transition: 'background .3s',
       }}
     >
-      <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+      <div className="section-pad" style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}>
         <div style={{ marginBottom: 40 }}>
           <div style={{ height: 1, background: 'var(--contrary-div)', marginBottom: 14 }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, flexWrap: 'wrap' }}>
@@ -112,43 +111,42 @@ export function InquireBand({
   href?: string;
 }) {
   return (
-    <section
-      className="section-pad"
-      style={{ borderTop: '1px solid var(--border)', padding: '64px 40px' }}
-    >
-      <div style={{ maxWidth: 640 }}>
-        <Rule accent style={{ width: 48, marginBottom: 18 }} />
-        <Ey style={{ marginBottom: 16 }}>Properties available on request</Ey>
-        <div
-          style={{
-            fontFamily: 'var(--font-serif), serif',
-            fontSize: 28,
-            fontWeight: 500,
-            lineHeight: 1.2,
-            color: 'var(--ink)',
-            textWrap: 'pretty',
-            marginBottom: 28,
-          }}
-        >
-          {headline}
+    <section style={{ borderTop: '1px solid var(--border)', padding: '64px 0' }}>
+      <div className="section-pad" style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}>
+        <div style={{ maxWidth: 640 }}>
+          <Rule accent style={{ width: 48, marginBottom: 18 }} />
+          <Ey style={{ marginBottom: 16 }}>Properties available on request</Ey>
+          <div
+            style={{
+              fontFamily: 'var(--font-serif), serif',
+              fontSize: 28,
+              fontWeight: 500,
+              lineHeight: 1.2,
+              color: 'var(--ink)',
+              textWrap: 'pretty',
+              marginBottom: 28,
+            }}
+          >
+            {headline}
+          </div>
+          <Link
+            href={href}
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: '.14em',
+              textTransform: 'uppercase',
+              background: 'var(--ink)',
+              color: 'var(--bg)',
+              padding: '12px 24px',
+              display: 'inline-block',
+              borderRadius: 1,
+            }}
+          >
+            {label} →
+          </Link>
         </div>
-        <Link
-          href={href}
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 9,
-            fontWeight: 700,
-            letterSpacing: '.14em',
-            textTransform: 'uppercase',
-            background: 'var(--ink)',
-            color: 'var(--bg)',
-            padding: '12px 24px',
-            display: 'inline-block',
-            borderRadius: 1,
-          }}
-        >
-          {label} →
-        </Link>
       </div>
     </section>
   );

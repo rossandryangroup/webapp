@@ -49,7 +49,7 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
         }}
       >
         <div>
-          <SectionHead label={w.cat} note="Issue 6 · May 2026" />
+          <SectionHead label={w.cat} />
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',
@@ -209,15 +209,17 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
       </article>
 
       <section
-        className="section-pad"
         style={{
           background: 'var(--bg-alt)',
           borderTop: '1px solid var(--border)',
-          padding: '64px 40px',
+          padding: '64px 0',
         }}
       >
-        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <SectionHead label="Also in this issue" note="May 2026" />
+        <div
+          className="section-pad"
+          style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px' }}
+        >
+          <SectionHead label="More from the Walkthrough" />
           <div
             className="grid-collapse-3"
             style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}
