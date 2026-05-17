@@ -66,87 +66,102 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
       <Nav current="Properties" />
 
       <section
-        className="section-pad grid-collapse"
+        aria-label={`${l.addr} cover`}
         style={{
-          maxWidth: 1320,
-          margin: '0 auto',
-          padding: '48px 40px 64px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 400px',
-          gap: 56,
-          alignItems: 'end',
+          position: 'relative',
+          width: '100%',
+          minHeight: 'clamp(480px, 72vh, 720px)',
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${l.image})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          alignItems: 'flex-end',
         }}
       >
-        <div>
-          <SectionHead label="Active listing" note={`${l.hood} · May 2026`} />
+        <div
+          className="section-pad"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '64px 40px 56px',
+            width: '100%',
+          }}
+        >
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',
-              fontSize: 'clamp(2.5rem,6vw,5rem)',
+              fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
               fontWeight: 500,
               lineHeight: 1.05,
               letterSpacing: '-.025em',
-              color: 'var(--ink)',
+              color: '#fff',
               textWrap: 'pretty',
-              marginBottom: 24,
+              textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+              margin: 0,
+              maxWidth: 820,
             }}
           >
             {l.addr}
           </h1>
-          <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
-            {stats.map(([v, lbl]) => (
-              <div key={lbl}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-serif), serif',
-                    fontSize: 22,
-                    fontWeight: 400,
-                    color: 'var(--ink)',
-                    marginBottom: 4,
-                  }}
-                >
-                  {v}
-                </div>
-                <Ov>{lbl}</Ov>
-              </div>
-            ))}
-          </div>
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-            <Link
-              href="/contact#contact-form"
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 9,
-                fontWeight: 700,
-                letterSpacing: '.14em',
-                textTransform: 'uppercase',
-                background: 'var(--accent)',
-                color: '#F8F5F0',
-                padding: '11px 22px',
-                borderRadius: 1,
-              }}
-            >
-              Inquire about this property
-            </Link>
-            <Link
-              href="/properties"
-              style={{
-                fontFamily: 'var(--font-sans), sans-serif',
-                fontSize: 9,
-                fontWeight: 500,
-                letterSpacing: '.10em',
-                textTransform: 'uppercase',
-                color: 'var(--ink-mute)',
-                borderBottom: '1px solid var(--border-md)',
-                paddingBottom: 1,
-              }}
-            >
-              ← All listings
-            </Link>
-          </div>
         </div>
-        <div>
-          <Photo h={500} ph={l.ph} src={l.image} alt={l.addr} />
+      </section>
+
+      <section
+        className="section-pad"
+        style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 64px' }}
+      >
+        <SectionHead label="Active listing" note={`${l.hood} · May 2026`} />
+        <div style={{ display: 'flex', gap: 32, marginBottom: 28, flexWrap: 'wrap' }}>
+          {stats.map(([v, lbl]) => (
+            <div key={lbl}>
+              <div
+                style={{
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 22,
+                  fontWeight: 400,
+                  color: 'var(--ink)',
+                  marginBottom: 4,
+                }}
+              >
+                {v}
+              </div>
+              <Ov>{lbl}</Ov>
+            </div>
+          ))}
+        </div>
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
+          <Link
+            href="/contact#contact-form"
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: '.14em',
+              textTransform: 'uppercase',
+              background: 'var(--accent)',
+              color: '#F8F5F0',
+              padding: '11px 22px',
+              borderRadius: 1,
+            }}
+          >
+            Inquire about this property
+          </Link>
+          <Link
+            href="/properties"
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 9,
+              fontWeight: 500,
+              letterSpacing: '.10em',
+              textTransform: 'uppercase',
+              color: 'var(--ink-mute)',
+              borderBottom: '1px solid var(--border-md)',
+              paddingBottom: 1,
+            }}
+          >
+            ← All listings
+          </Link>
         </div>
       </section>
 

@@ -55,7 +55,6 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
         }}
       >
         <div>
-          <SectionHead label={w.cat} />
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',

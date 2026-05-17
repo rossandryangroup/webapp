@@ -2,7 +2,7 @@
 import type { Metadata } from 'next';
 import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
-import { Ey, Hillside, Photo, SectionHead } from '../../components/Primitives';
+import { Ey, Hillside, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
@@ -41,36 +41,44 @@ export default function ContactPage() {
       <Nav />
 
       <section
-        className="section-pad grid-collapse"
+        aria-label="Inquire"
         style={{
-          maxWidth: 1320,
-          margin: '0 auto',
-          padding: '64px 40px 72px',
-          display: 'grid',
-          gridTemplateColumns: '1fr 320px',
-          gap: 56,
-          alignItems: 'end',
+          position: 'relative',
+          width: '100%',
+          minHeight: 'clamp(440px, 64vh, 660px)',
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.bhNight})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          alignItems: 'flex-end',
         }}
       >
-        <div>
-          <SectionHead label="Get in touch" note="Beverly Hills" />
+        <div
+          className="section-pad"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '64px 40px 56px',
+            width: '100%',
+          }}
+        >
           <h1
             style={{
               fontFamily: 'var(--font-serif), serif',
-              fontSize: 'clamp(2.5rem,6vw,5rem)',
+              fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
               fontWeight: 500,
               lineHeight: 1.05,
               letterSpacing: '-.025em',
-              color: 'var(--ink)',
+              color: '#fff',
               textWrap: 'pretty',
-              maxWidth: 640,
+              textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+              margin: 0,
+              maxWidth: 820,
             }}
           >
             Considering a move? Let&apos;s have a real conversation first.
           </h1>
-        </div>
-        <div>
-          <Photo h={380} ph="ph-1" src={EDITORIAL_IMAGES.bhNight} alt="Beverly Hills at night" />
         </div>
       </section>
 

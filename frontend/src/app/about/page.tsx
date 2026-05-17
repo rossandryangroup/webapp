@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import { ContraryBand, InquireBand } from '../../components/Bands';
 import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
-import { Ey, Ov, Photo, Rule, SectionHead } from '../../components/Primitives';
+import { Ey, Ov, Rule, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
@@ -80,44 +80,51 @@ export default function AboutPage() {
       <Nav current="About" />
 
       <section
+        aria-label="About the team"
+        style={{
+          position: 'relative',
+          width: '100%',
+          minHeight: 'clamp(440px, 64vh, 660px)',
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.santaMonicaArtDeco})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          alignItems: 'flex-end',
+        }}
+      >
+        <div
+          className="section-pad"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '64px 40px 56px',
+            width: '100%',
+          }}
+        >
+          <h1
+            style={{
+              fontFamily: 'var(--font-serif), serif',
+              fontSize: 'clamp(2.5rem, 5.4vw, 4.5rem)',
+              fontWeight: 500,
+              lineHeight: 1.05,
+              letterSpacing: '-.025em',
+              color: '#fff',
+              textWrap: 'pretty',
+              textShadow: '0 1px 24px rgba(0,0,0,0.35)',
+              margin: 0,
+              maxWidth: 820,
+            }}
+          >
+            Fifteen years in the same market.
+          </h1>
+        </div>
+      </section>
+
+      <section
         className="section-pad"
         style={{ maxWidth: 1320, margin: '0 auto', padding: '64px 40px 72px' }}
       >
-        <div
-          className="grid-collapse"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 400px',
-            gap: 56,
-            alignItems: 'start',
-            marginBottom: 64,
-          }}
-        >
-          <div>
-            <SectionHead label="About the team" />
-            <h1
-              style={{
-                fontFamily: 'var(--font-serif), serif',
-                fontSize: 'clamp(2.5rem,6vw,5rem)',
-                fontWeight: 500,
-                lineHeight: 1.05,
-                letterSpacing: '-.025em',
-                color: 'var(--ink)',
-                textWrap: 'pretty',
-              }}
-            >
-              Fifteen years in the same market.
-            </h1>
-          </div>
-          <div>
-            <Photo
-              h={400}
-              ph="ph-1"
-              src={EDITORIAL_IMAGES.santaMonicaArtDeco}
-              alt="2525 Main Street, Santa Monica"
-            />
-          </div>
-        </div>
         <div style={{ maxWidth: 720 }}>
           <Rule style={{ marginBottom: 14 }} />
           <div style={{ display: 'flex', alignItems: 'center', gap: 20, marginBottom: 36 }}>
