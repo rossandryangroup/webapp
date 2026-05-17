@@ -18,6 +18,14 @@ type Props = {
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
 
+function formatPhone(raw: string): string {
+  const digits = raw.replace(/\D/g, '').slice(0, 10);
+  if (digits.length === 0) return '';
+  if (digits.length < 4) return `(${digits}`;
+  if (digits.length < 7) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+  return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+}
+
 const labelStyle: React.CSSProperties = {
   fontFamily: 'var(--font-serif), serif',
   fontSize: 13,
@@ -158,7 +166,8 @@ export function InquireForm({
             placeholder="(310) 000-0000"
             className="inp"
             value={phone}
-            onChange={(e) => setPhone(e.target.value)}
+            onChange={(e) => setPhone(formatPhone(e.target.value))}
+            inputMode="tel"
           />
         </div>
       ) : null}
