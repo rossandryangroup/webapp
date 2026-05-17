@@ -1,389 +1,656 @@
-'use client';
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
+import { Footer } from '../components/Footer';
+import { Nav } from '../components/Nav';
+import { Ey, Ov, Photo, Rule } from '../components/Primitives';
+import { LISTINGS, WALKTHROUGH } from '../data/mock';
 
-import { useEffect, useState } from 'react';
-
-const TESTIMONIALS = [
+const SIDEBAR = [
   {
-    text: "They carefully guided us through every step of buying our first home. Their negotiation skills are 10 out of 10, we couldn't have asked for a better team by our side.",
-    author: 'First-Time Homebuyer, Beverly Hills',
+    cat: 'Market Commentary',
+    title: "Spring 2026 buyer's window: what the data actually says",
+    date: 'May 2026',
   },
   {
-    text: "Ross and Ryan did an incredible job helping me with my real estate needs and went above and beyond to make sure I was receiving the best deal. I've now used them twice, as both a buyer and seller.",
-    author: 'Repeat Client, Venice Beach',
+    cat: 'Neighborhood',
+    title: 'Trousdale Estates: the last mid-century view lots',
+    date: 'Apr 2026',
   },
   {
-    text: 'The Ross and Ryan Group made things very easy and seamless. They are well known and highly respected in the local and wider city real estate markets. Truly world-class service.',
-    author: 'Luxury Property Seller, Bel Air',
+    cat: 'Lifestyle',
+    title: 'Palm Springs in early October. Our favorite long weekend.',
+    date: 'Mar 2026',
   },
 ];
 
-const LISTINGS = [
-  {
-    img: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
-    badge: 'New Listing',
-    price: '$8,495,000',
-    address: '1952 N Beverly Drive, Beverly Hills',
-    specs: ['4 Bed', '5 Bath', '4,200 sqft'],
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
-    badge: 'Featured',
-    price: '$2,495,000',
-    address: 'Woodland Hills Resort Living',
-    specs: ['4 Bed', '4.25 Bath', '3,500+ sqft'],
-  },
-  {
-    img: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    badge: 'Open House',
-    price: '$3,250,000',
-    address: '726 Howard Street, Venice',
-    specs: ['3 Bed', '3.5 Bath', '2,800 sqft'],
-  },
-];
-
-const COMMUNITIES = [
-  {
-    name: 'Beverly Hills',
-    img: 'https://images.unsplash.com/photo-1534190760961-74e8c1c5c3da?w=600&q=80',
-  },
-  {
-    name: 'Bel Air',
-    img: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?w=600&q=80',
-  },
-  {
-    name: 'Venice',
-    img: 'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=600&q=80',
-  },
-  {
-    name: 'Hollywood Hills',
-    img: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80',
-  },
-];
-
-const INSTAGRAM = [
-  'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80',
-  'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80',
-  'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=400&q=80',
-  'https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=400&q=80',
-  'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&q=80',
-  'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=400&q=80',
-];
-
-export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-  const [activeTestimonial, setActiveTestimonial] = useState(0);
-  const [mobileNavOpen, setMobileNavOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) {
-          if (e.isIntersecting) e.target.classList.add('visible');
-        }
-      },
-      { threshold: 0.15, rootMargin: '0px 0px -50px 0px' },
-    );
-    for (const el of document.querySelectorAll('.reveal')) observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const id = setInterval(() => {
-      setActiveTestimonial((i) => (i + 1) % TESTIMONIALS.length);
-    }, 6000);
-    return () => clearInterval(id);
-  }, []);
+export default function HomePage() {
+  const featured = LISTINGS.slice(0, 3);
+  const notes = WALKTHROUGH.slice(0, 3);
 
   return (
     <>
-      <nav id="navbar" className={scrolled ? 'scrolled' : ''}>
-        <a href="#" className="nav-logo" aria-label="Ross & Ryan Group">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/rrg-logo-trans-white.png" alt="Ross & Ryan Group" />
-        </a>
-        <ul className={`nav-links ${mobileNavOpen ? 'show' : ''}`}>
-          <li>
-            <a href="#about">About</a>
-          </li>
-          <li>
-            <a href="#listings">Listings</a>
-          </li>
-          <li>
-            <a href="#communities">Communities</a>
-          </li>
-          <li>
-            <a href="#testimonials">Reviews</a>
-          </li>
-          <li>
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-        <a href="#contact" className="nav-contact">
-          Get In Touch
-        </a>
-        <button
-          type="button"
-          className="nav-hamburger"
-          onClick={() => setMobileNavOpen((v) => !v)}
-          aria-label="Menu"
+      <Nav />
+
+      {/* Hero */}
+      <section
+        className="section-pad"
+        style={{ maxWidth: 1320, margin: '0 auto', padding: '48px 40px 0' }}
+      >
+        <Rule accent style={{ marginBottom: 28 }} />
+        <div
+          className="grid-collapse"
+          style={{ display: 'grid', gridTemplateColumns: '3fr 1fr', gap: 48, alignItems: 'start' }}
         >
-          <span />
-          <span />
-          <span />
-        </button>
-      </nav>
-
-      <section className="hero">
-        <div className="hero-bg" />
-        <div className="hero-content">
-          <p className="hero-tag">Beverly Hills · Los Angeles · Luxury Real Estate</p>
-          <h1 className="hero-title">
-            Your Home. <span className="hero-accent">Our Mission.</span>
-          </h1>
-          <p className="hero-subtitle">
-            Top-producing agents at Douglas Elliman, specializing in luxury residential and
-            commercial properties across Los Angeles.
-          </p>
-          <div className="hero-cta">
-            <a href="#listings" className="btn-primary">
-              View Listings
-            </a>
-            <a href="#contact" className="btn-secondary">
-              Schedule a Consultation
-            </a>
-          </div>
-        </div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <div className="hero-scroll-line" />
-        </div>
-      </section>
-
-      <section className="section" id="about">
-        <div className="about">
-          <div className="about-images reveal">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/ross-headshot.jpg" alt="Ross Groefsema" className="about-img" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/ryan-headshot.jpg" alt="Ryan Hirsh" className="about-img" />
-          </div>
-          <div className="about-text reveal">
-            <p className="section-tag">About Us</p>
-            <h2 className="section-title">
-              Three Generations of
-              <br />
-              Real Estate Excellence
-            </h2>
-            <p className="section-subtitle">
-              Ross Groefsema and Ryan Hirsh, two of Beverly Hills&rsquo; top sales producers, joined
-              forces at Douglas Elliman to deliver an unmatched level of service in luxury real
-              estate.
-            </p>
-            <p className="section-subtitle">
-              Ross brings a legacy rooted in three generations of real estate brokers, having sold
-              record-shattering residences at the Montage Beverly Hills. Ryan contributes over 15
-              years of institutional experience in brokerage, asset management, and luxury
-              development.
-            </p>
-            <p className="section-subtitle">
-              Together, they serve an elite clientele of celebrities, athletes, and international
-              investors, making every transaction seamless, strategic, and personal.
-            </p>
-            <div className="about-details">
-              <div>
-                <div className="about-detail-label">Brokerage</div>
-                <div className="about-detail-value">Douglas Elliman</div>
-              </div>
-              <div>
-                <div className="about-detail-label">Specialties</div>
-                <div className="about-detail-value">Residential & Commercial</div>
-              </div>
-              <div>
-                <div className="about-detail-label">Recognition</div>
-                <div className="about-detail-value">RealTrends 2025 Verified</div>
-              </div>
-              <div>
-                <div className="about-detail-label">Location</div>
-                <div className="about-detail-value">Beverly Hills, CA</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="section listings-section" id="listings">
-        <div className="listings-header reveal">
           <div>
-            <p className="section-tag">Featured Properties</p>
-            <h2 className="section-title">Curated Luxury Listings</h2>
+            <Photo
+              h={460}
+              ph="ph-1"
+              label="Cover photography · Beverly Hills Flats · Morning light"
+            />
+            <div style={{ paddingTop: 28 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 18 }}>
+                <Ey>Cover Feature</Ey>
+                <div style={{ height: 1, flex: 1, background: 'var(--border)' }} />
+                <Ov>Beverly Hills Flats · May 2026</Ov>
+              </div>
+              <h1
+                style={{
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 40,
+                  fontWeight: 500,
+                  lineHeight: 1.12,
+                  letterSpacing: '-.025em',
+                  color: 'var(--ink)',
+                  textWrap: 'pretty',
+                  marginBottom: 18,
+                  maxWidth: 620,
+                }}
+              >
+                A house on a quiet street is still the best investment in Los Angeles.
+              </h1>
+              <p
+                style={{
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 16,
+                  lineHeight: 1.82,
+                  color: 'var(--ink-soft)',
+                  marginBottom: 22,
+                  maxWidth: 540,
+                  textWrap: 'pretty',
+                }}
+              >
+                Placeholder copy. The visual design is what we're evaluating this round. This
+                paragraph sets the editorial register for the lead story. It reads like journalism,
+                not marketing, and never reaches for scarcity language.
+              </p>
+              <Link
+                href="/walkthrough/spring-2026-rate-environment"
+                style={{
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: '.16em',
+                  textTransform: 'uppercase',
+                  color: 'var(--accent)',
+                  borderBottom: '1px solid var(--accent)',
+                  paddingBottom: 2,
+                }}
+              >
+                Read the piece →
+              </Link>
+            </div>
           </div>
-          <a href="#contact" className="btn-secondary">
-            View All Properties
-          </a>
-        </div>
-        <div className="listings-grid">
-          {LISTINGS.map((l) => (
-            <div key={l.address} className="listing-card reveal">
-              <div className="listing-img-wrap">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={l.img} alt={l.address} className="listing-img" />
-                <div className="listing-overlay" />
-                <div className="listing-badge">{l.badge}</div>
-              </div>
-              <div className="listing-info">
-                <div className="listing-price">{l.price}</div>
-                <div className="listing-address">{l.address}</div>
-                <div className="listing-specs">
-                  {l.specs.map((spec, i) => (
-                    <span key={spec}>
-                      <span>{spec}</span>
-                      {i < l.specs.length - 1 ? <span className="dot" /> : null}
-                    </span>
-                  ))}
+
+          <div style={{ paddingTop: 4 }}>
+            <Ey style={{ marginBottom: 18 }}>Also in this issue</Ey>
+            {SIDEBAR.map((s) => (
+              <div
+                key={s.title}
+                style={{ padding: '17px 0', borderBottom: '1px solid var(--border)' }}
+              >
+                <Ey style={{ marginBottom: 7 }}>{s.cat}</Ey>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-serif), serif',
+                    fontSize: 15,
+                    fontWeight: 500,
+                    lineHeight: 1.35,
+                    color: 'var(--ink)',
+                    textWrap: 'pretty',
+                    marginBottom: 7,
+                  }}
+                >
+                  {s.title}
                 </div>
+                <Ov>{s.date}</Ov>
               </div>
+            ))}
+            <div style={{ paddingTop: 20 }}>
+              <Link
+                href="/walkthrough"
+                style={{
+                  fontFamily: 'var(--font-sans), sans-serif',
+                  fontSize: 9,
+                  fontWeight: 700,
+                  letterSpacing: '.14em',
+                  textTransform: 'uppercase',
+                  color: 'var(--ink-mute)',
+                  borderBottom: '1px solid var(--border-md)',
+                  paddingBottom: 2,
+                }}
+              >
+                All entries →
+              </Link>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      <section id="communities">
-        <div className="section reveal" style={{ textAlign: 'center', paddingBottom: '3rem' }}>
-          <p className="section-tag">Our Markets</p>
-          <h2 className="section-title" style={{ margin: '0 auto' }}>
-            Communities We Serve
-          </h2>
-        </div>
-        <div className="communities-grid">
-          {COMMUNITIES.map((c) => (
-            <div key={c.name} className="community-card">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={c.img} alt={c.name} className="community-img" />
-              <div className="community-content">
-                <div className="community-name">{c.name}</div>
-                <div className="community-tag">Explore Listings</div>
-              </div>
+      {/* Featured Properties */}
+      <section className="section-pad" style={{ padding: '80px 40px' }}>
+        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              marginBottom: 40,
+              flexWrap: 'wrap',
+              gap: 16,
+            }}
+          >
+            <div>
+              <Rule accent style={{ width: 48, marginBottom: 16 }} />
+              <Ey style={{ marginBottom: 10 }}>Featured Properties</Ey>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 34,
+                  fontWeight: 500,
+                  letterSpacing: '-.02em',
+                  color: 'var(--ink)',
+                }}
+              >
+                Properties in selection.
+              </h2>
             </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="section testimonials-section" id="testimonials">
-        <div className="reveal">
-          <p className="section-tag">Client Experiences</p>
-          <h2 className="section-title">What Our Clients Say</h2>
-          <div className="testimonial-quote">{TESTIMONIALS[activeTestimonial].text}</div>
-          <div className="testimonial-author">{TESTIMONIALS[activeTestimonial].author}</div>
-          <div className="testimonial-dots">
-            {TESTIMONIALS.map((t, i) => (
-              <button
-                key={t.author}
-                type="button"
-                className={`testimonial-dot ${i === activeTestimonial ? 'active' : ''}`}
-                onClick={() => setActiveTestimonial(i)}
-                aria-label={`Show testimonial ${i + 1}`}
-              />
+            <Link
+              href="/properties"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+                color: 'var(--ink)',
+                borderBottom: '1px solid var(--border-md)',
+                paddingBottom: 2,
+              }}
+            >
+              Full catalogue →
+            </Link>
+          </div>
+          <div
+            className="grid-collapse-3"
+            style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', gap: 2 }}
+          >
+            {featured.map((l, i) => (
+              <Link
+                key={l.slug}
+                href={`/properties/${l.slug}`}
+                style={{ background: 'var(--bg-alt)', overflow: 'hidden', display: 'block' }}
+              >
+                <Photo h={i === 0 ? 300 : 200} ph={l.ph} label={l.hood}>
+                  <div style={{ position: 'absolute', top: 14, left: 14 }}>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-sans), sans-serif',
+                        fontSize: 8,
+                        fontWeight: 700,
+                        letterSpacing: '.14em',
+                        textTransform: 'uppercase',
+                        background: 'var(--ink)',
+                        color: 'var(--bg)',
+                        padding: '4px 9px',
+                      }}
+                    >
+                      {l.status}
+                    </span>
+                  </div>
+                </Photo>
+                <div style={{ padding: '22px 22px 26px' }}>
+                  <Ey style={{ marginBottom: 8 }}>{l.hood}</Ey>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-serif), serif',
+                      fontSize: 19,
+                      fontWeight: 500,
+                      color: 'var(--ink)',
+                      lineHeight: 1.2,
+                      marginBottom: 12,
+                    }}
+                  >
+                    {l.addr}
+                  </div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontSize: 10,
+                      color: 'var(--ink-mute)',
+                      letterSpacing: '.06em',
+                      marginBottom: 16,
+                    }}
+                  >
+                    {l.spec}
+                  </div>
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'baseline',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <div
+                      style={{
+                        fontFamily: 'var(--font-serif), serif',
+                        fontSize: 22,
+                        fontWeight: 500,
+                        color: 'var(--ink)',
+                      }}
+                    >
+                      {l.price}
+                    </div>
+                    <span
+                      style={{
+                        fontFamily: 'var(--font-sans), sans-serif',
+                        fontSize: 9,
+                        fontWeight: 700,
+                        letterSpacing: '.12em',
+                        textTransform: 'uppercase',
+                        color: 'var(--accent)',
+                      }}
+                    >
+                      View →
+                    </span>
+                  </div>
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section instagram-section" id="instagram">
-        <div className="instagram-header reveal">
-          <p className="section-tag">Follow Along</p>
-          <h2 className="section-title">@rossandryangroup</h2>
-          <a
-            href="https://www.instagram.com/rossandryangroup/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="instagram-handle"
+      {/* CTA Band */}
+      <section
+        style={{
+          background: 'var(--bg-alt)',
+          borderTop: '1px solid var(--border)',
+          borderBottom: '1px solid var(--border)',
+        }}
+      >
+        <div
+          className="grid-collapse section-pad"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            padding: '0 40px',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1fr',
+            alignItems: 'stretch',
+            minHeight: 480,
+          }}
+        >
+          <div
+            style={{
+              padding: '80px 72px 80px 0',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+            }}
           >
-            View on Instagram &rarr;
-          </a>
-        </div>
-        <div className="instagram-grid">
-          {INSTAGRAM.map((src) => (
-            <div key={src} className="instagram-item">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={src} alt="Property" />
-              <div className="instagram-item-overlay">
-                <span className="instagram-icon">&#9825;</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="contact-section" id="contact">
-        <div className="contact-info reveal">
-          <div className="contact-copy">
-            <p className="section-tag">Let&rsquo;s Connect</p>
-            <h2 className="section-title">
-              Ready to Make
-              <br />
-              Your Move?
+            <Rule accent style={{ width: 48, marginBottom: 18 }} />
+            <Ey style={{ marginBottom: 18 }}>Work with us</Ey>
+            <h2
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 36,
+                fontWeight: 500,
+                lineHeight: 1.18,
+                letterSpacing: '-.02em',
+                color: 'var(--ink)',
+                textWrap: 'pretty',
+                marginBottom: 22,
+                maxWidth: 380,
+              }}
+            >
+              Considering a move? Let's have a real conversation first.
             </h2>
-            <p className="section-subtitle">
-              Whether you&rsquo;re buying, selling, or investing, we&rsquo;re here to guide you
-              through every step with the expertise and care you deserve.
+            <p
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 15,
+                lineHeight: 1.85,
+                color: 'var(--ink-soft)',
+                marginBottom: 36,
+                textWrap: 'pretty',
+                maxWidth: 340,
+              }}
+            >
+              Placeholder. A small client list, fifteen years in the market, and the same honest
+              answer whether it's a $900K condo or a $12M estate.
             </p>
+            <Link
+              href="/contact"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+                background: 'var(--ink)',
+                color: 'var(--bg)',
+                padding: '13px 26px',
+                display: 'inline-block',
+                alignSelf: 'flex-start',
+                borderRadius: 1,
+              }}
+            >
+              Schedule a conversation
+            </Link>
           </div>
-          <div className="contact-details">
-            <div className="contact-detail">
-              <div className="contact-detail-icon">&#9993;</div>
-              <div>
-                <div className="contact-detail-label">Email</div>
-                <div className="contact-detail-value">
-                  <a href="mailto:ross@rossandryangroup.com">ross@rossandryangroup.com</a>
+          <div style={{ padding: '40px 0', display: 'flex', flexDirection: 'column', gap: 3 }}>
+            <Photo
+              h={0}
+              ph="ph-2"
+              label="Photography · Beverly Hills interior · Placeholder"
+              style={{ flex: '1 1 auto', minHeight: 200 }}
+            />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 3, flexShrink: 0 }}>
+              <Photo h={160} ph="ph-1" label="Exterior · Bel Air" />
+              <Photo h={160} ph="ph-3" label="Detail · Santa Monica" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section
+        className="section-pad"
+        style={{ padding: '80px 40px', borderBottom: '1px solid var(--border)' }}
+      >
+        <div
+          className="grid-collapse"
+          style={{
+            maxWidth: 1320,
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: '1fr 1.8fr',
+            gap: 80,
+            alignItems: 'center',
+          }}
+        >
+          <div>
+            <Rule accent style={{ width: 48, marginBottom: 16 }} />
+            <Ey style={{ marginBottom: 16 }}>Ross + Ryan</Ey>
+            <h2
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 36,
+                fontWeight: 500,
+                lineHeight: 1.15,
+                letterSpacing: '-.02em',
+                color: 'var(--ink)',
+                marginBottom: 26,
+                textWrap: 'pretty',
+              }}
+            >
+              Two agents. One shared point of view.
+            </h2>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: 'var(--ink-soft)',
+                marginBottom: 18,
+                textWrap: 'pretty',
+              }}
+            >
+              Fifteen years each. A small client list. The same answer whether it's a $900K condo or
+              a $12M estate, tell the client exactly what we'd tell a close friend.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 16,
+                lineHeight: 1.85,
+                color: 'var(--ink-soft)',
+                marginBottom: 36,
+                textWrap: 'pretty',
+              }}
+            >
+              Top 5% nationwide. 5.0 across 74 Zillow reviews. Featured on Million Dollar Listing
+              LA. We mention it here once and move on.
+            </p>
+            <Link
+              href="/about"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+                background: 'var(--ink)',
+                color: 'var(--bg)',
+                padding: '12px 24px',
+                display: 'inline-block',
+                borderRadius: 1,
+              }}
+            >
+              Our story →
+            </Link>
+          </div>
+          <div
+            className="grid-collapse"
+            style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, alignItems: 'end' }}
+          >
+            <div>
+              <img
+                src="/ross-headshot.jpg"
+                alt="Ross Groefsema"
+                style={{
+                  width: '100%',
+                  aspectRatio: '3/4',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                  display: 'block',
+                }}
+              />
+              <div style={{ paddingTop: 16 }}>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-serif), serif',
+                    fontSize: 18,
+                    fontWeight: 500,
+                    color: 'var(--ink)',
+                    marginBottom: 5,
+                  }}
+                >
+                  Ross Groefsema
                 </div>
+                <Ov>Founding Partner</Ov>
               </div>
             </div>
-            <div className="contact-detail">
-              <div className="contact-detail-icon">&#9742;</div>
-              <div>
-                <div className="contact-detail-label">Phone</div>
-                <div className="contact-detail-value">
-                  <a href="tel:3107950943">(310) 795-0943</a>
+            <div style={{ paddingTop: 40 }}>
+              <img
+                src="/ryan-headshot.jpg"
+                alt="Ryan Hirsh"
+                style={{
+                  width: '100%',
+                  aspectRatio: '3/4',
+                  objectFit: 'cover',
+                  objectPosition: 'top',
+                  display: 'block',
+                }}
+              />
+              <div style={{ paddingTop: 16 }}>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-serif), serif',
+                    fontSize: 18,
+                    fontWeight: 500,
+                    color: 'var(--ink)',
+                    marginBottom: 5,
+                  }}
+                >
+                  Ryan Hirsh
                 </div>
-              </div>
-            </div>
-            <div className="contact-detail">
-              <div className="contact-detail-icon">&#9873;</div>
-              <div>
-                <div className="contact-detail-label">Office</div>
-                <div className="contact-detail-value">
-                  150 El Camino Dr, Suite 300
-                  <br />
-                  Beverly Hills, CA 90212
-                </div>
+                <Ov>Founding Partner</Ov>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <footer>
-        <div className="footer-brand">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/rrg-logo-trans-white.png" alt="Ross & Ryan Group" />
+      {/* Journal */}
+      <section className="section-pad" style={{ padding: '80px 40px' }}>
+        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-end',
+              justifyContent: 'space-between',
+              marginBottom: 48,
+              flexWrap: 'wrap',
+              gap: 16,
+            }}
+          >
+            <div>
+              <Rule accent style={{ width: 48, marginBottom: 16 }} />
+              <Ey style={{ marginBottom: 10 }}>From the Walkthrough</Ey>
+              <h2
+                style={{
+                  fontFamily: 'var(--font-serif), serif',
+                  fontSize: 34,
+                  fontWeight: 500,
+                  letterSpacing: '-.02em',
+                  color: 'var(--ink)',
+                }}
+              >
+                Market intelligence, published.
+              </h2>
+            </div>
+            <Link
+              href="/walkthrough"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+                color: 'var(--ink)',
+                borderBottom: '1px solid var(--border-md)',
+                paddingBottom: 2,
+              }}
+            >
+              All entries →
+            </Link>
+          </div>
+
+          <div
+            className="grid-collapse-3"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '1.4fr 1fr 1fr',
+              gap: 2,
+              alignItems: 'start',
+            }}
+          >
+            <Link
+              href={`/walkthrough/${notes[0].slug}`}
+              style={{ background: 'var(--bg-alt)', display: 'block' }}
+            >
+              <Photo h={300} ph={notes[0].ph} label={`${notes[0].cat} · ${notes[0].date}`} />
+              <div style={{ padding: '26px 26px 32px' }}>
+                <Ov style={{ marginBottom: 14 }}>
+                  {notes[0].date} · {notes[0].read} read
+                </Ov>
+                <Rule accent style={{ width: 32, marginBottom: 16 }} />
+                <Ey style={{ marginBottom: 12 }}>{notes[0].cat}</Ey>
+                <div
+                  style={{
+                    fontFamily: 'var(--font-serif), serif',
+                    fontSize: 22,
+                    fontWeight: 500,
+                    lineHeight: 1.3,
+                    color: 'var(--ink)',
+                    textWrap: 'pretty',
+                    marginBottom: 26,
+                    maxWidth: 360,
+                  }}
+                >
+                  {notes[0].title}
+                </div>
+                <span
+                  style={{
+                    fontFamily: 'var(--font-sans), sans-serif',
+                    fontSize: 9,
+                    fontWeight: 700,
+                    letterSpacing: '.14em',
+                    textTransform: 'uppercase',
+                    color: 'var(--accent)',
+                  }}
+                >
+                  Read →
+                </span>
+              </div>
+            </Link>
+            {notes.slice(1).map((n) => (
+              <Link
+                key={n.slug}
+                href={`/walkthrough/${n.slug}`}
+                style={{ background: 'var(--bg-alt)', display: 'block' }}
+              >
+                <Photo h={180} ph={n.ph} label={`${n.cat} · ${n.date}`} />
+                <div style={{ padding: '20px 20px 24px' }}>
+                  <Ov style={{ marginBottom: 10 }}>
+                    {n.date} · {n.read} read
+                  </Ov>
+                  <Rule accent style={{ width: 24, marginBottom: 12 }} />
+                  <Ey style={{ marginBottom: 10 }}>{n.cat}</Ey>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-serif), serif',
+                      fontSize: 17,
+                      fontWeight: 500,
+                      lineHeight: 1.35,
+                      color: 'var(--ink)',
+                      textWrap: 'pretty',
+                      marginBottom: 20,
+                    }}
+                  >
+                    {n.title}
+                  </div>
+                  <span
+                    style={{
+                      fontFamily: 'var(--font-sans), sans-serif',
+                      fontSize: 9,
+                      fontWeight: 700,
+                      letterSpacing: '.14em',
+                      textTransform: 'uppercase',
+                      color: 'var(--accent)',
+                    }}
+                  >
+                    Read →
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-        <div className="footer-legal">
-          &copy; 2026 Ross & Ryan Group. All rights reserved.
-          <br />
-          DRE #01915056 | Douglas Elliman Real Estate
-        </div>
-        <div className="footer-brokerage">
-          Beverly Hills, California
-          <br />
-          <span style={{ fontSize: '0.6rem', opacity: 0.6 }}>Powered by Douglas Elliman</span>
-        </div>
-      </footer>
+      </section>
+
+      <Footer />
     </>
   );
 }

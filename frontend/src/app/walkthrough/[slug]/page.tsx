@@ -1,0 +1,262 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import { InquireBand } from '../../../components/Bands';
+import { Footer } from '../../../components/Footer';
+import { Nav } from '../../../components/Nav';
+import { Ey, Hillside, Ov, Photo, Rule, SectionHead } from '../../../components/Primitives';
+import { getWalkthrough, WALKTHROUGH } from '../../../data/mock';
+
+type Params = { slug: string };
+
+export function generateStaticParams(): Params[] {
+  return WALKTHROUGH.map((w) => ({ slug: w.slug }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
+  const { slug } = await params;
+  const w = getWalkthrough(slug);
+  if (!w) return { title: 'The Walkthrough | Ross & Ryan Group' };
+  return {
+    title: `${w.title} | The Walkthrough`,
+    description: `${w.cat}. ${w.read} read. By ${w.by}.`,
+  };
+}
+
+const COL = 720;
+
+export default async function WalkthroughEntryPage({ params }: { params: Promise<Params> }) {
+  const { slug } = await params;
+  const w = getWalkthrough(slug);
+  if (!w) notFound();
+
+  const related = WALKTHROUGH.filter((x) => x.slug !== w.slug).slice(0, 3);
+
+  return (
+    <>
+      <Nav current="The Walkthrough" />
+
+      <section
+        className="section-pad grid-collapse"
+        style={{
+          maxWidth: 1320,
+          margin: '0 auto',
+          padding: '48px 40px 64px',
+          display: 'grid',
+          gridTemplateColumns: '1.2fr 1fr',
+          gap: 56,
+          alignItems: 'start',
+        }}
+      >
+        <div>
+          <SectionHead label={w.cat} note="Issue 6 · May 2026" />
+          <h1
+            style={{
+              fontFamily: 'var(--font-serif), serif',
+              fontSize: 'clamp(2.5rem,6vw,5rem)',
+              fontWeight: 500,
+              lineHeight: 1.05,
+              letterSpacing: '-.025em',
+              color: 'var(--ink)',
+              textWrap: 'pretty',
+              marginBottom: 22,
+              maxWidth: 600,
+            }}
+          >
+            {w.title}
+          </h1>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+            <div
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 14,
+                fontStyle: 'italic',
+                color: 'var(--ink-mute)',
+              }}
+            >
+              By {w.by}
+            </div>
+            <div style={{ width: 1, height: 10, background: 'var(--border-md)' }} />
+            <Ov>{w.date}</Ov>
+            <div style={{ width: 1, height: 10, background: 'var(--border-md)' }} />
+            <Ov>{w.read} read</Ov>
+          </div>
+        </div>
+        <div>
+          <Photo h={420} ph={w.ph} />
+        </div>
+      </section>
+
+      <article style={{ maxWidth: COL, margin: '0 auto', padding: '0 40px 80px' }}>
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'var(--ink-soft)',
+            marginBottom: 22,
+            textWrap: 'pretty',
+          }}
+        >
+          Placeholder opening paragraph. This reads like a well-edited piece of market journalism,
+          not a press release, not a cautionary tale. It opens with a specific observation about
+          what&apos;s happening in the LA residential market right now, grounded in data.
+        </p>
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'var(--ink-soft)',
+            marginBottom: 22,
+            textWrap: 'pretty',
+          }}
+        >
+          Second paragraph. Numbers appear here but they&apos;re contextualized, not dropped as raw
+          data. The register is thoughtful, direct, no hedging, no jargon. If a stat needs a
+          disclaimer, it gets one in plain language.
+        </p>
+
+        <div style={{ margin: '36px 0', paddingLeft: 24, borderLeft: '2px solid var(--accent)' }}>
+          <div
+            style={{
+              fontFamily: 'var(--font-serif), serif',
+              fontSize: 22,
+              fontStyle: 'italic',
+              fontWeight: 400,
+              lineHeight: 1.4,
+              color: 'var(--ink)',
+              textWrap: 'pretty',
+            }}
+          >
+            &ldquo;{w.pullquote}&rdquo;
+          </div>
+          <Ov style={{ marginTop: 10 }}>
+            {w.by} · {w.date.split(',')[0]}
+          </Ov>
+        </div>
+
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'var(--ink-soft)',
+            marginBottom: 22,
+            textWrap: 'pretty',
+          }}
+        >
+          Third paragraph. A specific neighborhood-level observation, or a comparison to a prior
+          cycle. Placeholder in the same editorial register. The analysis is grounded; the language
+          is plain.
+        </p>
+
+        <Rule style={{ marginBottom: 28, marginTop: 12 }} />
+        <div style={{ margin: '0 -80px' }}>
+          <Photo h={380} ph="ph-2" label="Photography placeholder · Editorial mid-piece" />
+        </div>
+        <Rule style={{ marginTop: 28, marginBottom: 36 }} />
+
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'var(--ink-soft)',
+            marginBottom: 22,
+            textWrap: 'pretty',
+          }}
+        >
+          Fourth paragraph. The piece narrows toward a conclusion, a considered read of the current
+          data and what it suggests for someone in the market right now. Placeholder copy in the
+          same voice.
+        </p>
+        <p
+          style={{
+            fontFamily: 'var(--font-sans), sans-serif',
+            fontSize: 16,
+            lineHeight: 1.85,
+            color: 'var(--ink-soft)',
+            marginBottom: 40,
+            textWrap: 'pretty',
+          }}
+        >
+          Closing paragraph. Direct. No hedging, no weak call to action. A considered conclusion
+          that doesn&apos;t oversell and doesn&apos;t leave the reader nowhere to go.
+        </p>
+
+        <Rule style={{ marginBottom: 18 }} />
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+          <Hillside size={36} color="var(--ink-mute)" />
+          <Ov>Published {w.date} · Beverly Hills</Ov>
+          <div style={{ flex: 1 }} />
+          <Link
+            href="/walkthrough"
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 9,
+              fontWeight: 700,
+              letterSpacing: '.14em',
+              textTransform: 'uppercase',
+              color: 'var(--ink-mute)',
+              borderBottom: '1px solid var(--border-md)',
+              paddingBottom: 1,
+            }}
+          >
+            ← The Walkthrough
+          </Link>
+        </div>
+      </article>
+
+      <section
+        className="section-pad"
+        style={{
+          background: 'var(--bg-alt)',
+          borderTop: '1px solid var(--border)',
+          padding: '64px 40px',
+        }}
+      >
+        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+          <SectionHead label="Also in this issue" note="May 2026" />
+          <div
+            className="grid-collapse-3"
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 2 }}
+          >
+            {related.map((r) => (
+              <Link
+                key={r.slug}
+                href={`/walkthrough/${r.slug}`}
+                style={{ display: 'block', background: 'var(--bg)' }}
+              >
+                <Photo h={150} ph={r.ph} label={`${r.cat} · ${r.date}`} />
+                <div style={{ padding: '18px 18px 22px' }}>
+                  <Ov style={{ marginBottom: 10 }}>{r.date}</Ov>
+                  <Rule accent style={{ width: 24, marginBottom: 12 }} />
+                  <Ey style={{ marginBottom: 8 }}>{r.cat}</Ey>
+                  <div
+                    style={{
+                      fontFamily: 'var(--font-serif), serif',
+                      fontSize: 16,
+                      fontWeight: 500,
+                      lineHeight: 1.3,
+                      color: 'var(--ink)',
+                      textWrap: 'pretty',
+                    }}
+                  >
+                    {r.title}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <InquireBand
+        headline="Considering a move? Let's have a real conversation first."
+        href="/contact"
+      />
+      <Footer />
+    </>
+  );
+}
