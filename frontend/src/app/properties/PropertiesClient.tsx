@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { InquireBand } from '../../components/Bands';
@@ -34,20 +35,38 @@ export default function PropertiesClient() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(440px, 64vh, 640px)',
-          backgroundImage: cover.image
-            ? `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.65) 100%), url(${cover.image})`
-            : `var(--${cover.ph})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          background: cover.image ? 'transparent' : `var(--${cover.ph})`,
           color: '#fff',
           overflow: 'hidden',
         }}
       >
+        {cover.image && (
+          <>
+            <Image
+              src={cover.image}
+              alt={cover.addr}
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+            />
+            <div
+              aria-hidden
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0.65) 100%)',
+                zIndex: 1,
+              }}
+            />
+          </>
+        )}
         <div
           className="section-pad"
           style={{
             position: 'relative',
+            zIndex: 2,
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',

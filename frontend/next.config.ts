@@ -8,6 +8,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: path.join(__dirname),
   },
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'imgproxy.elliman.com' },
+      { protocol: 'https', hostname: 'media.elliman.com' },
+      { protocol: 'https', hostname: 'mediaservice.themls.com' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+    ],
+  },
 };
 
 export default nextConfig;

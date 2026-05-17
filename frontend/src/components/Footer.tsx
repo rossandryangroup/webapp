@@ -17,7 +17,11 @@ const COLUMNS: Array<{ label: string; items: Item[] }> = [
   },
   {
     label: 'Contact',
-    items: [{ label: 'Schedule a conversation', href: '/contact#contact-form' }],
+    items: [
+      { label: 'Schedule a conversation', href: '/contact#contact-form' },
+      { label: '(310) 795-0943', href: 'tel:+13107950943' },
+      { label: 'ross@rossandryangroup.com', href: 'mailto:ross@rossandryangroup.com' },
+    ],
   },
 ];
 

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ContraryBand } from '../../../components/Bands';
@@ -85,17 +86,34 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(480px, 72vh, 720px)',
-          backgroundImage: l.image
-            ? `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${l.image})`
-            : `var(--${l.ph})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
+          background: l.image ? 'transparent' : `var(--${l.ph})`,
           display: 'flex',
           alignItems: 'flex-end',
           overflow: 'hidden',
         }}
       >
+        {l.image && (
+          <>
+            <Image
+              src={l.image}
+              alt={l.addr}
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+            />
+            <div
+              aria-hidden
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background:
+                  'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%)',
+                zIndex: 1,
+              }}
+            />
+          </>
+        )}
         {!l.image && l.icon && (
           <div
             style={{
@@ -116,6 +134,7 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           className="section-pad"
           style={{
             position: 'relative',
+            zIndex: 2,
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',

@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { ContraryBand, InquireBand } from '../../components/Bands';
 import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
@@ -97,17 +97,34 @@ export default function AboutPage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(440px, 64vh, 660px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), url(/hutton-garage.jpg)`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
           display: 'flex',
           alignItems: 'flex-end',
+          overflow: 'hidden',
         }}
       >
+        <Image
+          src="/hutton-garage.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%)',
+            zIndex: 1,
+          }}
+        />
         <div
           className="section-pad"
           style={{
+            position: 'relative',
+            zIndex: 2,
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',
@@ -325,11 +342,15 @@ export default function AboutPage() {
                 </p>
               </div>
               <div style={{ order: i % 2 === 0 ? 2 : 1 }}>
-                <img
+                <Image
                   src={`/${p.img}-headshot.jpg`}
                   alt={p.name}
+                  width={600}
+                  height={800}
+                  sizes="(max-width: 768px) 100vw, 50vw"
                   style={{
                     width: '100%',
+                    height: 'auto',
                     aspectRatio: '3/4',
                     objectFit: 'cover',
                     objectPosition: 'top',

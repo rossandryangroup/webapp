@@ -1,10 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Footer } from '../../components/Footer';
 import { InquireForm } from '../../components/InquireForm';
 import { Nav } from '../../components/Nav';
 import { Ey, SectionHead } from '../../components/Primitives';
-import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
   title: { absolute: 'Contact Ross & Ryan Group · Beverly Hills Real Estate' },
@@ -47,17 +46,34 @@ export default function ContactPage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(440px, 64vh, 660px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.bhNight})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
           display: 'flex',
           alignItems: 'flex-end',
+          overflow: 'hidden',
         }}
       >
+        <Image
+          src="/beverly-hills-sign.jpg"
+          alt="Beverly Hills sign in Beverly Gardens Park"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', objectPosition: 'center', zIndex: 0 }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%)',
+            zIndex: 1,
+          }}
+        />
         <div
           className="section-pad"
           style={{
+            position: 'relative',
+            zIndex: 2,
             maxWidth: 1320,
             margin: '0 auto',
             padding: '64px 40px 56px',
@@ -104,9 +120,12 @@ export default function ContactPage() {
                   overflow: 'hidden',
                 }}
               >
-                <img
+                <Image
                   src={`/${p.img}-headshot.jpg`}
                   alt={p.name}
+                  width={360}
+                  height={480}
+                  sizes="180px"
                   style={{
                     width: '100%',
                     height: '100%',
