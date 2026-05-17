@@ -18,9 +18,9 @@ const cormorant = localFont({
 });
 
 const SITE = 'https://rossandryangroup.com';
-const TITLE_DEFAULT = 'Ross & Ryan Group | Beverly Hills Real Estate';
+const TITLE_DEFAULT = 'Ross & Ryan Group · Beverly Hills + Greater LA Real Estate';
 const DESCRIPTION =
-  'Quiet, considered residential real estate in Beverly Hills and greater LA. Two partners, fifteen years, the kind of representation that returns your call on a Sunday.';
+  'Quiet, considered residential real estate in Beverly Hills and greater LA. Two partners. Fifteen years. The kind of representation that picks up on Sunday.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE),
@@ -90,9 +90,23 @@ const organizationJsonLd = {
     { '@type': 'City', name: 'Santa Monica' },
     { '@type': 'City', name: 'Los Angeles' },
   ],
-  parentOrganization: { '@type': 'Organization', name: 'Douglas Elliman Real Estate' },
+  telephone: '+1-310-595-3888',
+  sameAs: ['https://www.elliman.com/agent/ross-groefsema/1030383'],
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'Douglas Elliman Real Estate',
+    identifier: 'CalDRE #01947727',
+  },
   employee: [
-    { '@type': 'Person', name: 'Ross Groefsema', jobTitle: 'Founding Partner' },
+    {
+      '@type': 'Person',
+      name: 'Ross Groefsema',
+      jobTitle: 'Founding Partner',
+      identifier: 'CalDRE #01915056',
+      telephone: '+1-310-795-0943',
+      email: 'ross@rossandryangroup.com',
+      sameAs: ['https://www.elliman.com/agent/ross-groefsema/1030383'],
+    },
     { '@type': 'Person', name: 'Ryan Hirsh', jobTitle: 'Founding Partner' },
   ],
 };

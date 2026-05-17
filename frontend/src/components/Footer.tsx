@@ -139,7 +139,8 @@ export function Footer() {
             color: 'var(--footer-copy)',
           }}
         >
-          © 2026 Ross &amp; Ryan Group · DRE #01234567
+          © 2026 Ross &amp; Ryan Group · Ross Groefsema CalDRE #01915056 · Douglas Elliman CalDRE
+          #01947727
         </span>
         <span
           style={{
