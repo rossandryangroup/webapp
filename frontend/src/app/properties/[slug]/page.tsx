@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ContraryBand } from '../../../components/Bands';
 import { Footer } from '../../../components/Footer';
+import { InquireForm } from '../../../components/InquireForm';
 import { Nav } from '../../../components/Nav';
 import { Ov, Photo, Rule, SectionHead } from '../../../components/Primitives';
 import { getListing, LISTINGS, RECENT_COMPS_BY_SLUG } from '../../../data/mock';
@@ -356,47 +357,16 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           >
             Interested in {l.addr}? Let&apos;s talk.
           </h2>
-          <form style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-            {[
-              { l: 'Name', p: 'Your full name', t: 'text' },
-              { l: 'Email', p: 'your@email.com', t: 'email' },
-              { l: "What you're considering", p: 'Buyer · Seller · Just looking', t: 'text' },
-            ].map((f) => (
-              <div key={f.l}>
-                <div
-                  style={{
-                    fontFamily: 'var(--font-serif), serif',
-                    fontSize: 13,
-                    fontStyle: 'italic',
-                    color: 'var(--ink-mute)',
-                    marginBottom: 6,
-                  }}
-                >
-                  {f.l}
-                </div>
-                <input type={f.t} placeholder={f.p} className="inp" />
-              </div>
-            ))}
-            <div style={{ paddingTop: 8 }}>
-              <button
-                type="submit"
-                style={{
-                  fontFamily: 'var(--font-sans), sans-serif',
-                  fontSize: 9,
-                  fontWeight: 700,
-                  letterSpacing: '.14em',
-                  textTransform: 'uppercase',
-                  background: 'var(--ink)',
-                  color: 'var(--bg)',
-                  padding: '13px 28px',
-                  border: 'none',
-                  borderRadius: 1,
-                }}
-              >
-                Send inquiry
-              </button>
-            </div>
-          </form>
+          <InquireForm
+            variant="property"
+            submitLabel="Send inquiry"
+            property={{
+              slug: l.slug,
+              address: l.addr,
+              hood: l.hood,
+              price: l.price,
+            }}
+          />
         </div>
       </section>
 

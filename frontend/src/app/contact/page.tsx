@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import type { Metadata } from 'next';
 import { Footer } from '../../components/Footer';
+import { InquireForm } from '../../components/InquireForm';
 import { Nav } from '../../components/Nav';
 import { Ey, Hillside, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
@@ -26,13 +27,6 @@ const PARTNERS = [
     email: 'ryan@rossandryangroup.com',
     bio: 'Fifteen years in the market. Desert person. Has a low tolerance for real estate theater. Will give you the real number before you fall in love with a house.',
   },
-];
-
-const FIELDS = [
-  { l: 'Name', p: 'Your full name', t: 'text' },
-  { l: 'Email', p: 'your@email.com', t: 'email' },
-  { l: 'Phone', p: '(310) 000-0000', t: 'tel' },
-  { l: "What you're considering", p: 'Buying · Selling · Both · Not sure', t: 'text' },
 ];
 
 export default function ContactPage() {
@@ -238,43 +232,7 @@ export default function ContactPage() {
           </div>
           <div>
             <SectionHead label="Start a conversation" note="We respond same day" />
-            <form style={{ display: 'flex', flexDirection: 'column', gap: 26 }}>
-              {FIELDS.map((f) => (
-                <div key={f.l}>
-                  <div
-                    style={{
-                      fontFamily: 'var(--font-serif), serif',
-                      fontSize: 13,
-                      fontStyle: 'italic',
-                      color: 'var(--ink-mute)',
-                      marginBottom: 6,
-                    }}
-                  >
-                    {f.l}
-                  </div>
-                  <input type={f.t} placeholder={f.p} className="inp" />
-                </div>
-              ))}
-              <div style={{ paddingTop: 8 }}>
-                <button
-                  type="submit"
-                  style={{
-                    fontFamily: 'var(--font-sans), sans-serif',
-                    fontSize: 9,
-                    fontWeight: 700,
-                    letterSpacing: '.14em',
-                    textTransform: 'uppercase',
-                    background: 'var(--ink)',
-                    color: 'var(--bg)',
-                    padding: '13px 28px',
-                    border: 'none',
-                    borderRadius: 1,
-                  }}
-                >
-                  Send message
-                </button>
-              </div>
-            </form>
+            <InquireForm variant="contact" submitLabel="Send message" />
           </div>
         </div>
       </section>
