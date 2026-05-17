@@ -87,124 +87,126 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
         </div>
       </section>
 
-      <article style={{ maxWidth: COL, margin: '0 auto', padding: '0 40px 80px' }}>
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: 'var(--ink-soft)',
-            marginBottom: 22,
-            textWrap: 'pretty',
-          }}
-        >
-          Placeholder opening paragraph. This reads like a well-edited piece of market journalism,
-          not a press release, not a cautionary tale. It opens with a specific observation about
-          what&apos;s happening in the LA residential market right now, grounded in data.
-        </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: 'var(--ink-soft)',
-            marginBottom: 22,
-            textWrap: 'pretty',
-          }}
-        >
-          Second paragraph. Numbers appear here but they&apos;re contextualized, not dropped as raw
-          data. The register is thoughtful, direct, no hedging, no jargon. If a stat needs a
-          disclaimer, it gets one in plain language.
-        </p>
-
-        <div style={{ margin: '36px 0', paddingLeft: 24, borderLeft: '2px solid var(--accent)' }}>
-          <div
+      <article style={{ maxWidth: 1320, margin: '0 auto', padding: '0 40px 80px' }}>
+        <div style={{ maxWidth: COL }}>
+          <p
             style={{
-              fontFamily: 'var(--font-serif), serif',
-              fontSize: 22,
-              fontStyle: 'italic',
-              fontWeight: 400,
-              lineHeight: 1.4,
-              color: 'var(--ink)',
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 16,
+              lineHeight: 1.85,
+              color: 'var(--ink-soft)',
+              marginBottom: 22,
               textWrap: 'pretty',
             }}
           >
-            &ldquo;{w.pullquote}&rdquo;
-          </div>
-          <Ov style={{ marginTop: 10 }}>
-            {w.by} · {w.date.split(',')[0]}
-          </Ov>
-        </div>
-
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: 'var(--ink-soft)',
-            marginBottom: 22,
-            textWrap: 'pretty',
-          }}
-        >
-          Third paragraph. A specific neighborhood-level observation, or a comparison to a prior
-          cycle. Placeholder in the same editorial register. The analysis is grounded; the language
-          is plain.
-        </p>
-
-        <Rule style={{ marginBottom: 28, marginTop: 12 }} />
-        <div style={{ margin: '0 -80px' }}>
-          <Photo h={380} ph="ph-2" label="Photography placeholder · Editorial mid-piece" />
-        </div>
-        <Rule style={{ marginTop: 28, marginBottom: 36 }} />
-
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: 'var(--ink-soft)',
-            marginBottom: 22,
-            textWrap: 'pretty',
-          }}
-        >
-          Fourth paragraph. The piece narrows toward a conclusion, a considered read of the current
-          data and what it suggests for someone in the market right now. Placeholder copy in the
-          same voice.
-        </p>
-        <p
-          style={{
-            fontFamily: 'var(--font-sans), sans-serif',
-            fontSize: 16,
-            lineHeight: 1.85,
-            color: 'var(--ink-soft)',
-            marginBottom: 40,
-            textWrap: 'pretty',
-          }}
-        >
-          Closing paragraph. Direct. No hedging, no weak call to action. A considered conclusion
-          that doesn&apos;t oversell and doesn&apos;t leave the reader nowhere to go.
-        </p>
-
-        <Rule style={{ marginBottom: 18 }} />
-        <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
-          <Hillside size={36} color="var(--ink-mute)" />
-          <Ov>Published {w.date} · Beverly Hills</Ov>
-          <div style={{ flex: 1 }} />
-          <Link
-            href="/walkthrough"
+            Placeholder opening paragraph. This reads like a well-edited piece of market journalism,
+            not a press release, not a cautionary tale. It opens with a specific observation about
+            what&apos;s happening in the LA residential market right now, grounded in data.
+          </p>
+          <p
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 9,
-              fontWeight: 700,
-              letterSpacing: '.14em',
-              textTransform: 'uppercase',
-              color: 'var(--ink-mute)',
-              borderBottom: '1px solid var(--border-md)',
-              paddingBottom: 1,
+              fontSize: 16,
+              lineHeight: 1.85,
+              color: 'var(--ink-soft)',
+              marginBottom: 22,
+              textWrap: 'pretty',
             }}
           >
-            ← The Walkthrough
-          </Link>
+            Second paragraph. Numbers appear here but they&apos;re contextualized, not dropped as
+            raw data. The register is thoughtful, direct, no hedging, no jargon. If a stat needs a
+            disclaimer, it gets one in plain language.
+          </p>
+
+          <div style={{ margin: '36px 0', paddingLeft: 24, borderLeft: '2px solid var(--accent)' }}>
+            <div
+              style={{
+                fontFamily: 'var(--font-serif), serif',
+                fontSize: 22,
+                fontStyle: 'italic',
+                fontWeight: 400,
+                lineHeight: 1.4,
+                color: 'var(--ink)',
+                textWrap: 'pretty',
+              }}
+            >
+              &ldquo;{w.pullquote}&rdquo;
+            </div>
+            <Ov style={{ marginTop: 10 }}>
+              {w.by} · {w.date.split(',')[0]}
+            </Ov>
+          </div>
+
+          <p
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 16,
+              lineHeight: 1.85,
+              color: 'var(--ink-soft)',
+              marginBottom: 22,
+              textWrap: 'pretty',
+            }}
+          >
+            Third paragraph. A specific neighborhood-level observation, or a comparison to a prior
+            cycle. Placeholder in the same editorial register. The analysis is grounded; the
+            language is plain.
+          </p>
+
+          <Rule style={{ marginBottom: 28, marginTop: 12 }} />
+          <div style={{ margin: '0 -80px' }}>
+            <Photo h={380} ph="ph-2" label="Photography placeholder · Editorial mid-piece" />
+          </div>
+          <Rule style={{ marginTop: 28, marginBottom: 36 }} />
+
+          <p
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 16,
+              lineHeight: 1.85,
+              color: 'var(--ink-soft)',
+              marginBottom: 22,
+              textWrap: 'pretty',
+            }}
+          >
+            Fourth paragraph. The piece narrows toward a conclusion, a considered read of the
+            current data and what it suggests for someone in the market right now. Placeholder copy
+            in the same voice.
+          </p>
+          <p
+            style={{
+              fontFamily: 'var(--font-sans), sans-serif',
+              fontSize: 16,
+              lineHeight: 1.85,
+              color: 'var(--ink-soft)',
+              marginBottom: 40,
+              textWrap: 'pretty',
+            }}
+          >
+            Closing paragraph. Direct. No hedging, no weak call to action. A considered conclusion
+            that doesn&apos;t oversell and doesn&apos;t leave the reader nowhere to go.
+          </p>
+
+          <Rule style={{ marginBottom: 18 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: 14, flexWrap: 'wrap' }}>
+            <Hillside size={36} color="var(--ink-mute)" />
+            <Ov>Published {w.date} · Beverly Hills</Ov>
+            <div style={{ flex: 1 }} />
+            <Link
+              href="/walkthrough"
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 9,
+                fontWeight: 700,
+                letterSpacing: '.14em',
+                textTransform: 'uppercase',
+                color: 'var(--ink-mute)',
+                borderBottom: '1px solid var(--border-md)',
+                paddingBottom: 1,
+              }}
+            >
+              ← The Walkthrough
+            </Link>
+          </div>
         </div>
       </article>
 
