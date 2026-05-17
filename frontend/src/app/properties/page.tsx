@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import PropertiesClient from './PropertiesClient';
 
 export const metadata: Metadata = {
-  title: 'Active Listings',
+  title: { absolute: 'Active Listings · Beverly Hills + Greater LA Real Estate' },
   description:
     'Current Ross & Ryan Group listings across Beverly Hills, Santa Monica, Trousdale, and greater LA. Architectural homes, view lots, and curated off-market opportunities.',
   alternates: { canonical: 'https://rossandryangroup.com/properties' },

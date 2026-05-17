@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import WalkthroughClient from './WalkthroughClient';
 
 export const metadata: Metadata = {
-  title: 'The Walkthrough',
+  title: { absolute: 'The Walkthrough · LA Real Estate Notes from Ross & Ryan' },
   description:
-    'Notes from inside the LA market. Neighborhood breakdowns, rate environment commentary, and the kind of context you only get walking the streets every week.',
+    'Notes from inside the LA market. Neighborhood breakdowns, rate environment commentary, and the context you only get walking the streets every week.',
   alternates: { canonical: 'https://rossandryangroup.com/walkthrough' },
   openGraph: {
     title: 'The Walkthrough | Ross & Ryan Group',

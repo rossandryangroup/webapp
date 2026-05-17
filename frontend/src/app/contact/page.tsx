@@ -7,9 +7,9 @@ import { Ey, Hillside, SectionHead } from '../../components/Primitives';
 import { EDITORIAL_IMAGES } from '../../data/mock';
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: { absolute: 'Contact Ross & Ryan Group · Beverly Hills Real Estate' },
   description:
-    'Considering a move? Start with a conversation. Beverly Hills, California. Same-day response during business hours.',
+    'Considering a move in Beverly Hills or greater LA? Start with a real conversation. Same-day response during business hours. Douglas Elliman partners.',
   alternates: { canonical: 'https://rossandryangroup.com/contact' },
   openGraph: {
     title: 'Contact | Ross & Ryan Group',
@@ -23,14 +23,14 @@ const PARTNERS = [
   {
     name: 'Ross Groefsema',
     img: 'ross',
-    phone: '(310) 000-0001',
+    phone: '(310) 795-0943',
     email: 'ross@rossandryangroup.com',
     bio: 'Fifteen years in LA residential. Will tell you the house is wrong for you if it is. Surfer, golfer, and someone who still picks up when you call on a Sunday.',
   },
   {
     name: 'Ryan Hirsh',
     img: 'ryan',
-    phone: '(310) 000-0002',
+    phone: '(512) 810-0171',
     email: 'ryan@rossandryangroup.com',
     bio: 'Fifteen years in the market. Desert person. Has a low tolerance for real estate theater. Will give you the real number before you fall in love with a house.',
   },
@@ -222,7 +222,7 @@ export default function ContactPage() {
                 marginBottom: 5,
               }}
             >
-              DRE #01234567
+              CalDRE #01915056 (Groefsema) · #01947727 (Douglas Elliman)
             </div>
             <div
               style={{
@@ -233,7 +233,7 @@ export default function ContactPage() {
                 marginBottom: 28,
               }}
             >
-              (310) 000-0000 main
+              (310) 595-3888 main
             </div>
             <Hillside size={44} color="var(--ink-mute)" />
           </div>

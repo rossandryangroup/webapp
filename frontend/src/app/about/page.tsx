@@ -5,18 +5,20 @@ import { Footer } from '../../components/Footer';
 import { Nav } from '../../components/Nav';
 import { Ey, Ov, Rule, SectionHead } from '../../components/Primitives';
 
+const ABOUT_TITLE = 'About Ross & Ryan · Beverly Hills Real Estate Partners';
+const ABOUT_DESCRIPTION =
+  'Fifteen years in the same LA market. Two partners, one point of view, and the kind of representation that picks up the phone on a Sunday afternoon.';
+
 export const metadata: Metadata = {
-  title: 'About',
-  description:
-    'Fifteen years in the same market. Two partners, one shared point of view, and the kind of representation that returns your call on a Sunday.',
+  title: { absolute: ABOUT_TITLE },
+  description: ABOUT_DESCRIPTION,
   alternates: { canonical: 'https://rossandryangroup.com/about' },
   openGraph: {
-    title: 'About | Ross & Ryan Group',
-    description:
-      'Fifteen years in the same market. Two partners, one shared point of view, and the kind of representation that returns your call on a Sunday.',
+    title: ABOUT_TITLE,
+    description: ABOUT_DESCRIPTION,
     url: 'https://rossandryangroup.com/about',
     images: [{ url: '/og-about.jpg', width: 1200, height: 630, alt: 'Ross & Ryan Group · About' }],
-    type: 'profile',
+    type: 'website',
   },
   twitter: { card: 'summary_large_image', images: ['/og-about.jpg'] },
 };
@@ -80,7 +82,7 @@ const PARTNERS = [
     name: 'Ryan Hirsh',
     img: 'ryan',
     bio1: "Ryan spent three years in commercial real estate before switching to residential and deciding this was where the actual relationship work happened. He is constitutionally incapable of telling someone a house is right for them when it isn't.",
-    bio2: "When he's not working, he's in the desert, Palm Springs, Joshua Tree, sometimes further out. He reads the market commentary the way other people read box scores. Placeholder second paragraph, same editorial register.",
+    bio2: "When he's not working, he's in the desert, Palm Springs, Joshua Tree, sometimes further out. He reads the market commentary the way other people read box scores. Fifteen years in, he still gets a kick out of finding the right house for the right buyer. The dollar figure is downstream of that.",
   },
 ];
 
