@@ -167,10 +167,12 @@ export default function ContactPage() {
       </section>
 
       <section
+        id="contact-form"
         style={{
           background: 'var(--bg-alt)',
           borderTop: '1px solid var(--border)',
           padding: '72px 0',
+          scrollMarginTop: 80,
         }}
       >
         <div

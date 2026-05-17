@@ -134,7 +134,7 @@ export function Nav({ current = '' }: { current?: string }) {
             </Link>
           ))}
           <Link
-            href="/contact"
+            href="/contact#contact-form"
             style={{
               fontFamily: 'var(--font-sans), sans-serif',
               fontSize: 9,

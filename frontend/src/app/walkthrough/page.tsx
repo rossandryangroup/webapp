@@ -290,7 +290,7 @@ export default function WalkthroughPage() {
 
       <InquireBand
         headline="Considering a move? Let's have a real conversation first."
-        href="/contact"
+        href="/contact#contact-form"
       />
       <Footer />
     </>

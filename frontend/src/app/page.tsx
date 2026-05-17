@@ -341,7 +341,7 @@ export default function HomePage() {
               answer whether it's a $900K condo or a $12M estate.
             </p>
             <Link
-              href="/contact"
+              href="/contact#contact-form"
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: 9,

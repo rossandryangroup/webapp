@@ -1,18 +1,39 @@
-import { Hillside } from './Primitives';
+'use client';
 
-const COLUMNS = [
+import Image from 'next/image';
+import Link from 'next/link';
+import { Hillside } from './Primitives';
+import { useTheme } from './ThemeProvider';
+
+type Item = { label: string; href: string };
+
+const COLUMNS: Array<{ label: string; items: Item[] }> = [
   {
     label: 'Properties',
-    items: ['Active Listings', 'Beverly Hills', 'Santa Monica', 'Marina del Rey'],
+    items: [
+      { label: 'Active Listings', href: '/properties' },
+      { label: 'Santa Monica', href: '/properties' },
+      { label: 'Lake Arrowhead', href: '/properties' },
+      { label: 'Echo Park', href: '/properties' },
+    ],
   },
   {
     label: 'The Walkthrough',
-    items: ['Market Commentary', 'Neighborhood Guides', 'Lifestyle', 'All entries'],
+    items: [{ label: 'All entries', href: '/walkthrough' }],
   },
-  { label: 'Contact', items: ['Schedule a call', 'Inquire', 'DRE #01234567', '(310) 000-0000'] },
+  {
+    label: 'Contact',
+    items: [
+      { label: 'Schedule a conversation', href: '/contact#contact-form' },
+      { label: 'Inquire', href: '/contact#contact-form' },
+    ],
+  },
 ];
 
 export function Footer() {
+  const { theme } = useTheme();
+  const monogramSrc =
+    theme === 'light' ? '/logo/rrg-monogram-light.png' : '/logo/rrg-monogram-dark.png';
   return (
     <footer style={{ background: 'var(--footer-bg)', transition: 'background .3s' }}>
       <div
@@ -27,18 +48,26 @@ export function Footer() {
         }}
       >
         <div>
-          <div
-            style={{
-              fontFamily: 'var(--font-sans), sans-serif',
-              fontSize: 12,
-              fontWeight: 800,
-              letterSpacing: '.18em',
-              textTransform: 'uppercase',
-              color: 'var(--footer-word)',
-              marginBottom: 10,
-            }}
-          >
-            Ross &amp; Ryan Group
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 10 }}>
+            <Image
+              src={monogramSrc}
+              alt="Ross & Ryan Group"
+              width={32}
+              height={32}
+              style={{ height: 32, width: 32, display: 'block', flexShrink: 0 }}
+            />
+            <div
+              style={{
+                fontFamily: 'var(--font-sans), sans-serif',
+                fontSize: 12,
+                fontWeight: 800,
+                letterSpacing: '.18em',
+                textTransform: 'uppercase',
+                color: 'var(--footer-word)',
+              }}
+            >
+              Ross &amp; Ryan Group
+            </div>
           </div>
           <div
             style={{
@@ -84,9 +113,11 @@ export function Footer() {
               {label}
             </div>
             {items.map((item) => (
-              <div
-                key={item}
+              <Link
+                key={item.label}
+                href={item.href}
                 style={{
+                  display: 'block',
                   fontFamily: 'var(--font-sans), sans-serif',
                   fontSize: 11,
                   fontWeight: 500,
@@ -94,8 +125,8 @@ export function Footer() {
                   marginBottom: 11,
                 }}
               >
-                {item}
-              </div>
+                {item.label}
+              </Link>
             ))}
           </div>
         ))}

@@ -256,7 +256,7 @@ export default async function WalkthroughEntryPage({ params }: { params: Promise
 
       <InquireBand
         headline="Considering a move? Let's have a real conversation first."
-        href="/contact"
+        href="/contact#contact-form"
       />
       <Footer />
     </>

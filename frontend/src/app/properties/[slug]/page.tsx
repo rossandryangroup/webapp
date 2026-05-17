@@ -113,7 +113,7 @@ export default async function PropertyPage({ params }: { params: Promise<Params>
           </div>
           <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
             <Link
-              href="/contact"
+              href="/contact#contact-form"
               style={{
                 fontFamily: 'var(--font-sans), sans-serif',
                 fontSize: 9,
