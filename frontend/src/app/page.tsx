@@ -38,7 +38,7 @@ export default function HomePage() {
           position: 'relative',
           width: '100%',
           minHeight: 'clamp(480px, 72vh, 720px)',
-          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.62) 100%), url(${EDITORIAL_IMAGES.bhNight})`,
+          backgroundImage: `linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.28) 55%, rgba(0,0,0,0.62) 100%), url(/beverly-hills-palms.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -109,9 +109,11 @@ export default function HomePage() {
                 textWrap: 'pretty',
               }}
             >
-              Placeholder copy. The visual design is what we're evaluating this round. This
-              paragraph sets the editorial register for the lead story. It reads like journalism,
-              not marketing, and never reaches for scarcity language.
+              Quiet streets hold their value in ways the listing sites don't really capture. The
+              lots are bigger, the neighbors stay longer, and the comps move slower in both
+              directions when the Fed gets loud. We've watched the same blocks south of Sunset trade
+              through three rate cycles now, and the pattern keeps showing up. The houses that stay
+              boring are the ones that compound.
             </p>
             <Link
               href="/walkthrough/spring-2026-rate-environment"
@@ -367,8 +369,9 @@ export default function HomePage() {
                 maxWidth: 340,
               }}
             >
-              Placeholder. A small client list, fifteen years in the market, and the same honest
-              answer whether it's a $900K condo or a $12M estate.
+              We keep the client list small on purpose. Fifteen years in, we've learned the only
+              answer worth giving is the honest one, and it doesn't change with the price tag. Same
+              conversation at $900K as at $12M.
             </p>
             <Link
               href="/contact#contact-form"
