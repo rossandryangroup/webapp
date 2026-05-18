@@ -5,27 +5,20 @@ import { Nav } from '../components/Nav';
 import { Ey, Ov, Photo, Rule } from '../components/Primitives';
 import { EDITORIAL_IMAGES, LISTINGS, WALKTHROUGH } from '../data/mock';
 
-const SIDEBAR = [
-  {
-    cat: 'Market Commentary',
-    title: "Spring 2026 buyer's window: what the data actually says",
-    date: 'May 2026',
-  },
-  {
-    cat: 'Neighborhood',
-    title: 'Trousdale Estates: the last mid-century view lots',
-    date: 'Apr 2026',
-  },
-  {
-    cat: 'Lifestyle',
-    title: 'Palm Springs in early October. Our favorite long weekend.',
-    date: 'Mar 2026',
-  },
-];
+const SIDEBAR_SLUGS = [
+  'spring-2026-rate-environment',
+  'trousdale-mid-century',
+  'palm-springs-october',
+] as const;
 
 export default function HomePage() {
   const featured = LISTINGS.slice(0, 3);
   const notes = WALKTHROUGH.slice(0, 3);
+  const sidebar = SIDEBAR_SLUGS.map((slug) => {
+    const entry = WALKTHROUGH.find((w) => w.slug === slug);
+    if (!entry) throw new Error(`SIDEBAR_SLUGS references missing walkthrough: ${slug}`);
+    return entry;
+  });
 
   return (
     <>
@@ -150,10 +143,16 @@ export default function HomePage() {
           </div>
 
           <div style={{ paddingTop: 4 }}>
-            {SIDEBAR.map((s) => (
-              <div
-                key={s.title}
-                style={{ padding: '17px 0', borderBottom: '1px solid var(--border)' }}
+            {sidebar.map((s) => (
+              <Link
+                key={s.slug}
+                href={`/walkthrough/${s.slug}`}
+                style={{
+                  display: 'block',
+                  padding: '17px 0',
+                  borderBottom: '1px solid var(--border)',
+                  color: 'inherit',
+                }}
               >
                 <Ey style={{ marginBottom: 7 }}>{s.cat}</Ey>
                 <div
@@ -170,7 +169,7 @@ export default function HomePage() {
                   {s.title}
                 </div>
                 <Ov>{s.date}</Ov>
-              </div>
+              </Link>
             ))}
             <div style={{ paddingTop: 20 }}>
               <Link
